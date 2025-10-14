@@ -7,7 +7,7 @@ Projet UTC SI28
 ### Download this repo
 
 ```
-git clone 
+git clone https://github.com/LefevreTom/SI28_Medusa.git
 ```
 
 ### Using git
