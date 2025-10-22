@@ -11,6 +11,8 @@ const rightView = Array.from([]);
 
 // Change the view based on input
 function changeView(direction) {
+    $("#scene").empty(); // Clear current scene
+
     const background = document.body.style;
     // Change view based on direction
     if(direction === 'left' && view > 0) {
