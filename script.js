@@ -5,8 +5,8 @@ let view = 1; /* 0 = left, 1 = center, 2 = right */
 const sceneName = "scene1";
 
 const leftView = Array.from(['book']);
-const centerView = Array.from(['book']);
-const rightView = Array.from(['book']);
+const centerView = Array.from([]);
+const rightView = Array.from([]);
 
 
 // Change the view based on input
