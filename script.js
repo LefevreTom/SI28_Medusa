@@ -48,21 +48,30 @@ function updatePosition(background) {
         background.backgroundPosition = 'left';
         leftBtn.style.visibility = 'hidden';
 
-        // load objects for left view
-        leftView.forEach(load_object);
+        // wait for animation to finish
+        setTimeout(() => {    
+            // load objects for left view
+            leftView.forEach(load_object);
+        }, 310);
     } else if(view === 1) {
         background.backgroundPosition = 'center';
         leftBtn.style.visibility = 'visible';
         rightBtn.style.visibility = 'visible';
         
-        // load objects for center view
-        centerView.forEach(load_object);
+        // wait for animation to finish
+        setTimeout(() => {    
+            // load objects for center view
+            centerView.forEach(load_object);
+        }, 310);
     } else if(view === 2) {
         background.backgroundPosition = 'right';
         rightBtn.style.visibility = 'hidden';
         
-        // load objects for right view
-        rightView.forEach(load_object);
+        // wait for animation to finish
+        setTimeout(() => {    
+            // load objects for right view
+            rightView.forEach(load_object);
+        }, 310);
     }
 }
 
