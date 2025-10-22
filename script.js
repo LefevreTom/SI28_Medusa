@@ -85,6 +85,9 @@ let init = () => {
     setTimeout(() => {
         document.getElementById('transitionScreen').style.zIndex = -10;
     }, 2000);
+    
+    // load objects for center view
+    centerView.forEach(load_object);
 
     // Event listener for key inputs
     document.addEventListener('keydown', function(event) {
