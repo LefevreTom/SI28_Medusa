@@ -70,6 +70,9 @@ nav ul li button:hover {
 }
 
 .object {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     opacity: var(--obj-opacity);
     position: absolute;
     top: 0px;
@@ -80,4 +83,5 @@ nav ul li button:hover {
 
 .object:hover{
     opacity: .7;
+    transition: background-image 0.2s ease-out;
 }

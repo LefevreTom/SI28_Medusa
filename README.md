@@ -2,6 +2,9 @@
 
 Projet UTC SI28
 
+Try at :
+https://si28-medusa.vercel.app
+
 ## Getting Started
 
 ### Download this repo
@@ -22,7 +25,7 @@ git add -A
 git commit -m "your message"
 ```
 
-* Ajouter les changements
+* Upload commits
 ```
 git push --set-upstream origin YourName
 ```
