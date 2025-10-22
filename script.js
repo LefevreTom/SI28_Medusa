@@ -34,7 +34,7 @@ function load_page(page, e) {
 // load objects inside the scene
 function load_object(page) {
     console.log("Trying to load : " + page);
-    load_page("pages/"+sceneName+"/objects/"+ page + "/" + page);
+    load_page("objects/"+ page + "/" + page);
 }
 
 // Update the scene based on current view
