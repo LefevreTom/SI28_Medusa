@@ -1,5 +1,6 @@
 // initialize variables
 let view = 1; /* 0 = left, 1 = center, 2 = right */
+let typeWriterTimeout;
 
 // Scene name should be the same as the folder name 
 const sceneName = "scene1";
@@ -86,7 +87,48 @@ function changeScene(scene) {
     }, 2000);
 }
 
-// Initialize the game
+
+    function closeInteraction(id){
+        const interactionBox = document.getElementById(id);
+        interactionBox.style.display = 'none';
+    }
+
+    function revealInteraction(id){
+        const interactionBox = document.getElementById(id + '_interaction');
+        interactionBox.style.display = 'flex';
+        callTypeWriter();
+    }
+
+    function callTypeWriter() {
+        clearTimeout(typeWriterTimeout);
+
+        const $el = $('.typewriter');
+        const fullText = $el.text();
+        const length = fullText.length;
+        let character = 0;
+
+        // store full text safely and hide content
+        $el.data('fulltext', fullText);
+        $el.text('');
+        $el.css('visibility', 'visible'); // show element right when typing starts
+
+        (function typeWriter() {
+            typeWriterTimeout = setTimeout(function() {
+                character++;
+                $el.text(fullText.substring(0, character));
+
+                if (character < length) {
+                    typeWriter();
+                }
+            }, 50);
+        }());
+    }
+
+
+
+////////////////////////
+// Initialize the game//
+////////////////////////
 let init = () => {
     // fade from black
     document.getElementById('transitionScreen').style.opacity = 0;
