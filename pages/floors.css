@@ -85,3 +85,40 @@ nav ul li button:hover {
     opacity: .7;
     transition: background-image 0.2s ease-out;
 }
+
+.interaction {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000cc;
+    padding: 10rem;
+    font-size: larger;
+    font-weight: medium;
+    display: none;
+    flex-direction: column;
+    align-items: right;
+    justify-content: end;
+    z-index: 150;
+    transition: display 0.3s ease-in-out;
+}
+.interaction .options{
+    display: flex;
+    justify-content: right;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.interaction .options button{
+    cursor: pointer;
+    border: 0;
+    background-color: #dddddd66;
+    padding: 1rem;
+}
+.interaction .options button:hover{
+    background-color: #dededecc;
+}
+.interaction .text{
+    background-color: #dddddd66;
+    padding: 1rem;
+}
