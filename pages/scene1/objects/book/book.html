@@ -5,7 +5,7 @@
         <button onclick="closeInteraction('book_interaction')">Close</button>
     </div>
     <div class="text"> 
-        <p>This is a simple book...</p>
+        <p class="typewriter">This is a simple book...</p>
     </div>
 </div>
 
@@ -39,4 +39,26 @@
         const interactionBox = document.getElementById(id + '_interaction');
         interactionBox.style.display = 'flex';
     }
+
+    function callTypeWriter(){
+        var text = $('.typewriter').text();
+        var length = text.length;
+        var timeOut;
+        var character = 0;
+
+        (function typeWriter() { 
+            timeOut = setTimeout(function() {
+                character++;
+                var type = text.substring(0, character);
+                $('.typewriter').text(type);
+                typeWriter();
+
+                if (character == length) {
+                    clearTimeout(timeOut);
+                }
+
+            }, 150);
+        }());
+    }
+
 </script>
