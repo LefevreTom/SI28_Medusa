@@ -42,24 +42,31 @@
         callTypeWriter();
     }
 
-    function callTypeWriter(){
-        var text = $('.typewriter').text();
-        var length = text.length;
-        var timeOut;
-        var character = 0;
+    function callTypeWriter() {
+        clearTimeout(typeWriterTimeout);
 
-        (function typeWriter() { 
-            timeOut = setTimeout(function() {
+        const $el = $('.typewriter');
+        const fullText = $el.data('fulltext') || $el.text();
+        const length = fullText.length;
+        let character = 0;
+
+        // store full text safely and hide content
+        $el.data('fulltext', fullText);
+        $el.text('');
+        $el.css('visibility', 'visible'); // show element right when typing starts
+
+        (function typeWriter() {
+            typeWriterTimeout = setTimeout(function() {
                 character++;
-                var type = text.substring(0, character);
-                $('.typewriter').text(type);
-                typeWriter();
+                $el.text(fullText.substring(0, character));
 
-                if (character == length) {
-                    clearTimeout(timeOut);
+                if (character < length) {
+                    typeWriter();
                 }
-            }, 150);
+            }, 50);
         }());
     }
+
+    let typeWriterTimeout;
 
 </script>
