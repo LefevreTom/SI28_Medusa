@@ -105,10 +105,12 @@ nav ul li button:hover {
     display: flex;
     flex-direction: column;
     justify-content: right;
+    align-items: end;
     gap: 2rem;
-    margin: 1rem 1rem 2rem 1rem;
+    margin: 1rem;
 }
 .interaction .options button{
+    width: 20vw;
     font-size: larger;
     cursor: pointer;
     border: 0;
@@ -125,5 +127,5 @@ nav ul li button:hover {
 }
 .interaction .text p{
     margin-top: 0;
-    font-size: larger;
+    font-size: x-large;
 }
