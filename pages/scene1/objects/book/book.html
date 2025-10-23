@@ -28,6 +28,7 @@
         const interactionBox = document.getElementById('book_interaction');
         interactionBox.querySelector('.text p').innerText = "You open the book and start reading about the myths of Medusa...";
         // interactionBox.style.display = 'block';
+        callTypeWriter();
     }
 
     function closeInteraction(id){
@@ -38,6 +39,7 @@
     function revealInteraction(id){
         const interactionBox = document.getElementById(id + '_interaction');
         interactionBox.style.display = 'flex';
+        callTypeWriter();
     }
 
     function callTypeWriter(){
@@ -56,7 +58,6 @@
                 if (character == length) {
                     clearTimeout(timeOut);
                 }
-
             }, 150);
         }());
     }
