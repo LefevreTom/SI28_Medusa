@@ -71,6 +71,7 @@ const GameSave = (() => {
         removeItem,
         getInventory,
         reset,
-        load
+        load,
+        init
     };
 })();
