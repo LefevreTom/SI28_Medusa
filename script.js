@@ -164,6 +164,7 @@ function resetGame() {
   localStorage.removeItem("gameProgress");
   localStorage.removeItem("inventory");
   console.log("Game data cleared!");
+  saveGame();
 }
 
 // Add an item to the inventory
