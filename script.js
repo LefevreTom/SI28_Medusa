@@ -101,6 +101,7 @@ function newGame() {
 
 function continueGame() {
     loadGame();
+    console.log("Continuing to floor " + gameProgress.floor);
     changeScene('pages/scene'+gameProgress.floor+'/mainScene'+gameProgress.floor+'.html');
 }
 
