@@ -28,10 +28,8 @@ const GameSave = (() => {
     // --- Add item to inventory ---
     function addItem(item) {
         const data = getSave();
-        if (!data.inventory.includes(item)) {
-            data.inventory.push(item);
-            save(data);
-        }
+        data.inventory.push(item);
+        save(data);
     }
 
     // --- Remove item from inventory ---
