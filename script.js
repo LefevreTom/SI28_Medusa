@@ -162,6 +162,18 @@ function addItem(item) {
   saveGame();
 }
 
+function removeItemAll(arr, value) {
+  var i = 0;
+  while (i < arr.length) {
+    if (arr[i] === value) {
+      arr.splice(i, 1);
+    } else {
+      ++i;
+    }
+  }
+  return arr;
+}
+
 // Advance to the next floor
 function nextFloor() {
   gameProgress.floor++;
@@ -200,13 +212,13 @@ let init = () => {
     // Remove collected items from views
     inventory.forEach(item => {
         if(leftView.includes(item)) {
-            leftView.pop(item);
+            removeItemAll(leftView, item);
         }
         if(centerView.includes(item)) {
-            centerView.pop(item);
+            removeItemAll(centerView, item);
         }
         if(rightView.includes(item)) {
-            rightView.pop(item);
+            removeItemAll(rightView, item);
         }
     })
 }

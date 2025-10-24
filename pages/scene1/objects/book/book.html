@@ -33,6 +33,6 @@
     function pickItem(){
         addItem('book');
         closeInteraction('book_interaction');
-        leftView.popObject('book');
+        removeItemAll(leftView, 'book');
     }
 </script>
