@@ -22,14 +22,19 @@ function changeView(direction) {
 
 // load pages inside the scene
 function load_page(page, e) {
-    console.log("Trying to load : " + page);
     $("#scene").load(page+".html");
 }
 
 // load objects inside the scene
 function load_object(page) {
-    console.log("Trying to load : " + page);
     load_page("objects/"+ page + "/" + page);
+}
+
+function updateObjects() {
+    $("#scene").empty(); // clear scene
+    leftView.forEach(load_object);
+    centerView.forEach(load_object);
+    rightView.forEach(load_object);
 }
 
 // Update the scene based on current view
