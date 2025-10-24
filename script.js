@@ -210,17 +210,17 @@ let init = () => {
     loadGame();
 
     // Remove collected items from views
-    inventory.forEach(item => {
-        if(leftView.includes(item)) {
-            removeItemAll(leftView, item);
-        }
-        if(centerView.includes(item)) {
-            removeItemAll(centerView, item);
-        }
-        if(rightView.includes(item)) {
-            removeItemAll(rightView, item);
-        }
-    })
+    // inventory.forEach(item => {
+    //     if(leftView.includes(item)) {
+    //         removeItemAll(leftView, item);
+    //     }
+    //     if(centerView.includes(item)) {
+    //         removeItemAll(centerView, item);
+    //     }
+    //     if(rightView.includes(item)) {
+    //         removeItemAll(rightView, item);
+    //     }
+    // })
 }
 
 // Launch game
