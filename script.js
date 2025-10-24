@@ -2,12 +2,19 @@
 let view = 1; /* 0 = left, 1 = center, 2 = right */
 let typeWriterTimeout;
 
-// Scene name should be the same as the folder name 
-const sceneName = "scene1";
+// Game state variables
+let gameProgress = {
+  floor: 0,
+  time: 0,
+};
+let inventory = [];
 
-const leftView = Array.from(['book']);
-const centerView = Array.from([]);
-const rightView = Array.from([]);
+// Scene name should be the same as the folder name 
+let sceneName = "scene1";
+
+let leftView = Array.from(['book']);
+let centerView = Array.from([]);
+let rightView = Array.from([]);
 
 
 // Change the view based on input
@@ -88,43 +95,81 @@ function changeScene(scene) {
 }
 
 
-    function closeInteraction(id){
-        const interactionBox = document.getElementById(id);
-        interactionBox.style.display = 'none';
-    }
+function closeInteraction(id){
+    const interactionBox = document.getElementById(id);
+    interactionBox.style.display = 'none';
+}
 
-    function revealInteraction(id){
-        const interactionBox = document.getElementById(id + '_interaction');
-        interactionBox.style.display = 'flex';
-        callTypeWriter();
-    }
+function revealInteraction(id){
+    const interactionBox = document.getElementById(id + '_interaction');
+    interactionBox.style.display = 'flex';
+    callTypeWriter();
+}
 
-    function callTypeWriter() {
-        clearTimeout(typeWriterTimeout);
+function callTypeWriter() {
+    clearTimeout(typeWriterTimeout);
 
-        const $el = $('.typewriter');
-        const fullText = $el.text();
-        const length = fullText.length;
-        let character = 0;
+    const $el = $('.typewriter');
+    const fullText = $el.text();
+    const length = fullText.length;
+    let character = 0;
 
-        // store full text safely and hide content
-        $el.data('fulltext', fullText);
-        $el.text('');
-        $el.css('visibility', 'visible'); // show element right when typing starts
+    // store full text safely and hide content
+    $el.data('fulltext', fullText);
+    $el.text('');
+    $el.css('visibility', 'visible'); // show element right when typing starts
 
-        (function typeWriter() {
-            typeWriterTimeout = setTimeout(function() {
-                character++;
-                $el.text(fullText.substring(0, character));
+    (function typeWriter() {
+        typeWriterTimeout = setTimeout(function() {
+            character++;
+            $el.text(fullText.substring(0, character));
 
-                if (character < length) {
-                    typeWriter();
-                }
-            }, 50);
-        }());
-    }
+            if (character < length) {
+                typeWriter();
+            }
+        }, 50);
+    }());
+}
 
+// Save the game state in local storage
+function saveGame() {
+  localStorage.setItem("gameProgress", JSON.stringify(gameProgress));
+  localStorage.setItem("inventory", JSON.stringify(inventory));
+  console.log("Game saved!");
+}
 
+// Load the game state from local storage
+function loadGame() {
+  const savedProgress = localStorage.getItem("gameProgress");
+  const savedInventory = localStorage.getItem("inventory");
+
+  if (savedProgress) gameProgress = JSON.parse(savedProgress);
+  if (savedInventory) inventory = JSON.parse(savedInventory);
+
+  console.log("Game loaded:", gameProgress, inventory);
+}
+
+// Reset the game state is needed
+function resetGame() {
+  localStorage.removeItem("gameProgress");
+  localStorage.removeItem("inventory");
+  console.log("Game data cleared!");
+}
+
+// Add an item to the inventory
+function addItem(item) {
+  inventory.push(item);
+  saveGame();
+}
+
+// Advance to the next floor
+function nextFloor() {
+  gameProgress.floor++;
+  saveGame();
+}
+
+// Save the game before the page is unloaded
+window.addEventListener("beforeunload", saveGame);
 
 ////////////////////////
 // Initialize the game//
@@ -148,6 +193,22 @@ let init = () => {
             changeView('right');
         }
     });
+
+    // Load game state
+    loadGame();
+
+    // Remove collected items from views
+    inventory.forEach(item => {
+        if(leftView.includes(item)) {
+            leftView.pop(item);
+        }
+        if(centerView.includes(item)) {
+            centerView.pop(item);
+        }
+        if(rightView.includes(item)) {
+            rightView.pop(item);
+        }
+    })
 }
 
 // Launch game
