@@ -1,20 +1,5 @@
 // initialize variables
-let view = 1; /* 0 = left, 1 = center, 2 = right */
 let typeWriterTimeout;
-
-// Game state variables
-let gameProgress = {
-  floor: 1,
-  time: 0,
-};
-let inventory = [];
-
-// Scene name should be the same as the folder name 
-let sceneName = "scene1";
-
-let leftView = Array.from(['book']);
-let centerView = Array.from([]);
-let rightView = Array.from([]);
 
 
 // Change the view based on input
@@ -95,14 +80,15 @@ function changeScene(scene) {
 }
 
 function newGame() {
-    resetGame();
+    GameSave.reset();
     changeScene('pages/scene1/mainScene1.html');
 }
 
 function continueGame() {
-    loadGame();
-    console.log("Continuing to floor " + gameProgress.floor);
-    changeScene('pages/scene'+gameProgress.floor+'/mainScene'+gameProgress.floor+'.html');
+    GameSave.load();
+    var floor = GameSave.getProgress().floor;
+    console.log("Continuing to floor " + floor);
+    changeScene('pages/scene'+floor+'/mainScene'+floor+'.html');
 }
 
 function closeInteraction(id){
@@ -141,38 +127,6 @@ function callTypeWriter() {
     }());
 }
 
-// Save the game state in local storage
-function saveGame() {
-  localStorage.setItem("gameProgress", JSON.stringify(gameProgress));
-  localStorage.setItem("inventory", JSON.stringify(inventory));
-  console.log("Game saved!");
-}
-
-// Load the game state from local storage
-function loadGame() {
-  const savedProgress = localStorage.getItem("gameProgress");
-  const savedInventory = localStorage.getItem("inventory");
-
-  if (savedProgress) gameProgress = JSON.parse(savedProgress);
-  if (savedInventory) inventory = JSON.parse(savedInventory);
-
-  console.log("Game loaded:", gameProgress, inventory);
-}
-
-// Reset the game state is needed
-function resetGame() {
-  localStorage.removeItem("gameProgress");
-  localStorage.removeItem("inventory");
-  console.log("Game data cleared!");
-  saveGame();
-}
-
-// Add an item to the inventory
-function addItem(item) {
-  inventory.push(item);
-  saveGame();
-}
-
 function removeItemAll(arr, value) {
   var i = 0;
   while (i < arr.length) {
@@ -185,55 +139,15 @@ function removeItemAll(arr, value) {
   return arr;
 }
 
-// Advance to the next floor
-function nextFloor() {
-  gameProgress.floor++;
-  saveGame();
-}
+// Remove collected items from views
+function updateViews() {
+    const inventory = GameSave.getInventory();
+    const allViews = [leftView, centerView, rightView];
 
-// Save the game before the page is unloaded
-window.addEventListener("beforeunload", saveGame);
-
-////////////////////////
-// Initialize the game//
-////////////////////////
-let init = () => {
-    // fade from black
-    document.getElementById('transitionScreen').style.opacity = 0;
-    // wait for animation to finish
-    setTimeout(() => {
-        document.getElementById('transitionScreen').style.zIndex = -10;
-    }, 2000);
-    
-    // load objects for center view
-    centerView.forEach(load_object);
-
-    // Event listener for key inputs
-    document.addEventListener('keydown', function(event) {
-        if(event.key === 'ArrowLeft') {
-            changeView('left');
-        } else if(event.key === 'ArrowRight') {
-            changeView('right');
-        }
+    allViews.forEach(view => {
+        // remove all items that are already collected
+        inventory.forEach(item => {
+            removeItemAll(view, item);
+        });
     });
-
-    // Load game state
-    loadGame();
-
-    // Remove collected items from views
-    inventory.forEach(item => {
-        if(leftView.includes(item)) {
-            removeItemAll(leftView, item);
-        }
-        if(centerView.includes(item)) {
-            removeItemAll(centerView, item);
-        }
-        if(rightView.includes(item)) {
-            removeItemAll(rightView, item);
-        }
-    })
 }
-
-// Launch game
-window.onload = init;
-
