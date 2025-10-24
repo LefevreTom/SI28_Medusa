@@ -4,7 +4,7 @@ let typeWriterTimeout;
 
 // Game state variables
 let gameProgress = {
-  floor: 0,
+  floor: 1,
   time: 0,
 };
 let inventory = [];
@@ -94,6 +94,15 @@ function changeScene(scene) {
     }, 2000);
 }
 
+function newGame() {
+    resetGame();
+    changeScene('pages/scene1/mainScene1.html');
+}
+
+function continueGame() {
+    loadGame();
+    changeScene('pages/scene'+gameProgress.floor+'/mainScene'+gameProgress.floor+'.html');
+}
 
 function closeInteraction(id){
     const interactionBox = document.getElementById(id);
@@ -210,17 +219,17 @@ let init = () => {
     loadGame();
 
     // Remove collected items from views
-    // inventory.forEach(item => {
-    //     if(leftView.includes(item)) {
-    //         removeItemAll(leftView, item);
-    //     }
-    //     if(centerView.includes(item)) {
-    //         removeItemAll(centerView, item);
-    //     }
-    //     if(rightView.includes(item)) {
-    //         removeItemAll(rightView, item);
-    //     }
-    // })
+    inventory.forEach(item => {
+        if(leftView.includes(item)) {
+            removeItemAll(leftView, item);
+        }
+        if(centerView.includes(item)) {
+            removeItemAll(centerView, item);
+        }
+        if(rightView.includes(item)) {
+            removeItemAll(rightView, item);
+        }
+    })
 }
 
 // Launch game
