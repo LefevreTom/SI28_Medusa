@@ -16,4 +16,5 @@ let init = () => {
 }
 
 // Launch game
-window.onload = init;
+// window.onload = init;
+window.addEventListener('pageshow', init);
