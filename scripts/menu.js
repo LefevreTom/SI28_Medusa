@@ -7,11 +7,11 @@ let init = () => {
     }, 2000);
 
     // Hide "Continue " button
-    document.getElementById('continueGame').hidden = true;
+    document.getElementById('continueGame').style.display = 'none';
 
     // if saved progress -> show "Continue"
     if (Object.keys(GameSave.getProgress()).length > 0) {
-        document.getElementById('continueGame').hidden = false;
+        document.getElementById('continueGame').style.display = 'block';
     }
 }
 
