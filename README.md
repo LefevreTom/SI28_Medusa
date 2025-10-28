@@ -27,5 +27,5 @@ git commit -m "your message"
 
 * Upload commits
 ```
-git push --set-upstream origin YourName
+git push --set-upstream origin [YourName]
 ```
