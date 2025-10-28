@@ -1,4 +1,5 @@
 let init = () => {
+    document.getElementById('transitionScreen').style.opacity = 1;
     // fade from black
     document.getElementById('transitionScreen').style.opacity = 0;
     // wait for animation to finish
