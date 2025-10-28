@@ -6,6 +6,9 @@ let init = () => {
         document.getElementById('transitionScreen').style.zIndex = -10;
     }, 2000);
 
+    // Hide "Continue " button
+    document.getElementById('continueGame').hidden = true;
+
     // if saved progress -> show "Continue"
     if (Object.keys(GameSave.getProgress()).length > 0) {
         document.getElementById('continueGame').hidden = false;
