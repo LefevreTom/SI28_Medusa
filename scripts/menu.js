@@ -5,9 +5,11 @@ let init = () => {
     setTimeout(() => {
         document.getElementById('transitionScreen').style.zIndex = -10;
     }, 2000);
-    
-    // Load game state
-    GameSave.load();
+
+    // if saved progress -> show "Continue"
+    if (Object.keys(GameSave.getProgress()).length > 0) {
+        document.getElementById('continueGame').hidden = false;
+    }
 }
 
 // Launch game

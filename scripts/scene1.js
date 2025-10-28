@@ -9,7 +9,7 @@ let centerView = Array.from([]);
 let rightView = Array.from([]);
 
 GameSave.init({
-  progress: { level: 1, time: 0 },
+  progress: { floor: 1, time: 0 },
   inventory: []
 });
 
@@ -38,10 +38,7 @@ let init = () => {
             changeView('right');
         }
     });
-
-    // Load game state
-    GameSave.load();
-
+    
     updateViews();
 }
 

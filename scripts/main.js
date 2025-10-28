@@ -90,7 +90,6 @@ function newGame() {
 }
 
 function continueGame() {
-    GameSave.load();
     var floor = GameSave.getProgress().floor;
     console.log("Continuing to floor " + floor);
     changeScene('pages/scene'+floor+'/mainScene'+floor+'.html');
