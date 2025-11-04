@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medusa | Floor 1</title>
-    <link rel="stylesheet" href="../floors.css">
-    <script src="../../scripts/main.js"></script>
-    <script src="../../scripts/gamesave.js"></script>
-    <script src="../../scripts/scene1.js"></script>
-    <script src="../../imports/jquery-3.7.1.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medusa | Floor 1</title>
+<link rel="stylesheet" href="../floors.css">
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/gamesave.js"></script>
+<script src="../../scripts/scene1.js"></script>
+<script src="../../imports/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <div id="transitionScreen"></div>
-    <div id="UI">
-        <nav>
-            <ul>
-                <li><button id="left" onclick="changeView('left')">&lt;</button></li>
-                <li><button id="right" onclick="changeView('right')">&gt;</button></li>
-            </ul>
-        </nav>
-        <div id="scene"></div>
-    </div>
+<div id="transitionScreen"></div>
+<div id="UI">
+<nav>
+<ul>
+<li>
+<button id="left" onclick="changeView('left')">
+<img src="../../assets/left.svg" alt="Gauche">
+</button>
+</li>
+<li>
+<button id="right" onclick="changeView('right')">
+<img src="../../assets/right.svg" alt="Droite">
+</button>
+</li>
+</ul>
+</nav>
+<div id="scene"></div>
+</div>
 </body>
 </html>
