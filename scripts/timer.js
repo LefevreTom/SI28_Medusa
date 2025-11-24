@@ -14,8 +14,7 @@ function initTimer() {
 
     if (remaining === null || remaining <= 0) {
         // New game = 5 minutes
-        // remaining = 300;
-        remaining = 10;
+        remaining = 300;
         GameSave.setTimer(remaining);
     }
 
@@ -62,10 +61,10 @@ function onTimerEnd() {
     // Reset save file completely
     GameSave.reset();
 
-    // Redirect after 3 sec so sound & animation can be seen/heard
+    // Redirect after 4 sec so sound & animation can be seen/heard
     setTimeout(() => {
         window.location.href = "../../index.html";
-    }, 3000);
+    }, 4000);
 }
 
 // Pause timer
