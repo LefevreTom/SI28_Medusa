@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medusa</title>
-    <link rel="stylesheet" href="main.css">
-    <script src="scripts/gamesave.js"></script>
-    <script src="scripts/menu.js"></script>
-    <script src="scripts/main.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medusa</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="scripts/gamesave.js"></script>
+  <script src="scripts/menu.js"></script>
+  <script src="scripts/main.js"></script>
 </head>
 <body>
-    <div id="transitionScreen"></div>
-    <div id="UI">
-        <nav>
-            <ul>
-                <li id="continueGame"><button id="Play" onclick="continueGame()">Continue</button></li>
-                <li><button id="Settings" onclick="newGame()">New game</button></li>
-                <li><button id="Settings" onclick="">Settings</button></li>
-            </ul>
-        </nav>
+  <div id="transitionScreen"></div>
+
+  <div id="UI">
+    <div class="menu-card">
+      <img src="./assets/card.svg" alt="Card Frame" class="card-svg" />
+      <nav>
+        <ul>
+          <li><button id="continueGame" onclick="continueGame()">Continue</button></li>
+          <li><button id="newGame" onclick="newGame()">New Game</button></li>
+          <li><button id="settings">Settings</button></li>
+        </ul>
+      </nav>
     </div>
+  </div>
 </body>
 </html>
