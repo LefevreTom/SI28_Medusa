@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="../floors.css">
     <script src="../../scripts/main.js"></script>
     <script src="../../scripts/gamesave.js"></script>
+    <script src="../../scripts/timer.js"></script>
     <script src="../../scripts/scene1.js"></script>
     <script src="../../imports/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div id="transitionScreen"></div>
     <div id="UI">
+        <div id="timer" class="timer">05:00</div>
+        <!-- Load the sound to play when timer hit 0 -->
+        <audio id="timerEndSound" src="sounds/timer_end.mp3" preload="auto"></audio>
         <nav>
             <ul>
                 <li><button id="left" onclick="changeView('left')">&lt;</button></li>
@@ -23,3 +27,7 @@
     </div>
 </body>
 </html>
+
+<script>
+    initTimer();
+</script>

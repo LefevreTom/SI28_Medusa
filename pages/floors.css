@@ -132,3 +132,20 @@ nav ul li button:hover {
 .typewriter {
   visibility: hidden; /* hide text initially */
 }
+
+.timer {
+    text-align: end;
+    color: white;
+    font-weight: bold;
+    font-size: xx-large;
+    margin: 2vh 2vh 0 0;
+}
+
+.timer-flash {
+    animation: redFlash 0.5s infinite alternate;
+}
+
+@keyframes redFlash {
+    from { background-color: rgba(255, 0, 0, 0.249); }
+    to   { background-color: rgba(139, 0, 0, 0.249); }
+}

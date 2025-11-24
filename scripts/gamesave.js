@@ -61,6 +61,19 @@ const GameSave = (() => {
         }
     }
 
+    // --- Timer ---
+    function setTimer(seconds) {
+        const data = getSave();
+        data.timer = seconds;
+        save(data);
+    }
+
+    // --- Get timer ---
+    function getTimer() {
+        return getSave().timer ?? null;
+    }
+
+
     // Public API
     return {
         setProgress,
@@ -70,6 +83,8 @@ const GameSave = (() => {
         getInventory,
         reset,
         load,
-        init
+        init,
+        setTimer,
+        getTimer
     };
 })();
