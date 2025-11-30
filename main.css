@@ -38,9 +38,9 @@ html, body {
   width: 600px; height: 500px;
   display: flex;
   flex-direction: column;
-  padding: 8% 0 0 0;
+  /* padding: 8% 0 0 0;
   gap: 8%;
-  background: no-repeat center url(./assets/card.svg);
+  background: no-repeat center url(./assets/card.svg); */
 }
 
 .card-svg {
@@ -54,6 +54,7 @@ html, body {
 
 h1{
   position: relative;
+  top: 5%;
   z-index : 2;
   text-align: center;
   margin: 0;
@@ -61,21 +62,32 @@ h1{
   font-size: 36px;
   font-family: 'Poiret One', sans-serif;
   color: #fff;
-  /* For the future */
-  /* background: no-repeat center url(./assets/card1.2.svg); */
+}
+
+h1::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 220%;
+  background: no-repeat center url(./assets/card1.2.svg);
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ------------------ Boutons ------------------ */
 nav {
   position: relative;
-  z-index: 2;
+  z-index: -2;
   width: 100%;
-  margin-top: 3rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* For the future */
-  /* background: no-repeat center url(./assets/card1.1.svg); */
+  justify-content: center;
+  background: no-repeat center url(./assets/card1.1.svg);
+  background-size: contain;
 }
 
 nav ul {
@@ -92,6 +104,7 @@ nav ul li button {
   cursor: pointer;
   width: 30vw;
   min-width: 300px;
+  max-width: 450px;
   padding: .5rem;
   border: 2px double #d7a103;
   font-size: 26px;
