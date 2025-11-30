@@ -1,0 +1,48 @@
+<div class="object" id="trapdoor" onclick="revealInteraction('trapdoor')"></div>
+<div class="interaction" id="trapdoor_interaction">
+    <div class="options" id="trapdoor_options">
+        <button onclick="opentrapdoor()">Ouvrir</button>
+        <button onclick="closeInteraction('trapdoor_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Une trappe, elle à l'air de ne pas avoir de serrure.</p>
+    </div>
+</div>
+
+<style>
+    #trapdoor {
+        background: url(objects/trapdoor/trapdoor.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/trapdoor/trapdoor.png) center/contain no-repeat;
+        mask: url(objects/trapdoor/trapdoor.png) center/contain no-repeat;
+        
+        width: 53vh;
+        height: 31vh;
+        top: 5.4vh;
+        left: 77.7vh;
+    }
+</style>
+
+<script>
+    function opentrapdoor(){
+        if (GameSave.hasItem('stool')){
+            const interactionBox = document.getElementById('trapdoor_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous utilisez le tabouret pour atteindre la trappe, elle s'ouvre.";
+            callTypeWriter("trapdoor");
+
+            let options = document.getElementById('trapdoor_options');
+            options.innerHTML = `<button onclick="Leave()">Sortir</button>`;
+            return;
+        }
+        else{
+            const interactionBox = document.getElementById('trapdoor_interaction');
+            interactionBox.querySelector('.text p').innerText = "La trappe est trop haute pour l'atteindre.";
+            callTypeWriter("trapdoor");
+            return;
+        }
+    }
+    function Leave(){
+        window.location.href = "../../../pages/scene1/mainScene1.html";
+    }
+</script>

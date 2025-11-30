@@ -2,16 +2,15 @@
 let view = 1; /* 0 = left, 1 = center, 2 = right */
 
 // Scene name should be the same as the folder name 
-let sceneName = "scene1";
+let sceneName = "scene0";
 
-let leftView = Array.from(['book']);
-let centerView = Array.from([]);
-let rightView = Array.from([]);
+let centerView = Array.from(['door', 'bed', 'trapdoor', 'stool']);
 
-// GameSave.init({
-//   progress: { floor: 1, time: 0 },
-//   inventory: []
-// });
+GameSave.init({
+  progress: { floor: 0, time: 0 },
+  inventory: [],
+  view: {centerView: centerView}
+});
 
 // Save the game before the page is unloaded
 window.addEventListener("beforeunload", GameSave.save);
@@ -29,17 +28,6 @@ let init = () => {
     
     // load objects for center view
     centerView.forEach(load_object);
-
-    // Event listener for key inputs
-    document.addEventListener('keydown', function(event) {
-        if(event.key === 'ArrowLeft') {
-            changeView('left');
-        } else if(event.key === 'ArrowRight') {
-            changeView('right');
-        }
-    });
-    
-    updateViews();
 }
 
 // Launch game

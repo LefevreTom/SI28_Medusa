@@ -1,0 +1,34 @@
+<div class="object" id="door" onclick="revealInteraction('door')"></div>
+<div class="interaction" id="door_interaction">
+    <div class="options" id="door_options">
+        <button onclick="opendoor()">Ouvrir</button>
+        <button onclick="closeInteraction('door_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">C'est la seule porte de la pièce.</p>
+    </div>
+</div>
+
+<style>
+    #door {
+        background: url(objects/door/door.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/door/door.png) center/contain no-repeat;
+        mask: url(objects/door/door.png) center/contain no-repeat;
+        
+        width: 19vh;
+        height: 31vh;
+        top: 33.4vh;
+        left: 79.7vh;
+    }
+</style>
+
+<script>
+    // function called when "reading" the door
+    function opendoor(){
+        const interactionBox = document.getElementById('door_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous essayez d'ouvrir la porte, mais elle est verrouillée...";
+        callTypeWriter("door");
+    }
+</script>

@@ -1,14 +1,11 @@
-@font-face {
-  font-family: 'Shadow of Xizor';
-  src: url('./assets/fonts/SHAXIZOR.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
 html, body {
   margin: 0;
   height: 100vh;
   background: #000 url(./assets/background.jpeg) center/cover no-repeat;
   animation: pan 60s infinite alternate linear;
-  font-family: 'Shadow of Xizor', sans-serif;
+  font-family: 'Poiret One', sans-serif;
   color: #d7a103;
 }
 
@@ -41,8 +38,9 @@ html, body {
   width: 600px; height: 500px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 8% 0 0 0;
+  gap: 8%;
+  background: no-repeat center url(./assets/card.svg);
 }
 
 .card-svg {
@@ -54,6 +52,19 @@ html, body {
   pointer-events: none;
 }
 
+h1{
+  position: relative;
+  z-index : 2;
+  text-align: center;
+  margin: 0;
+  font-weight: bold;
+  font-size: 36px;
+  font-family: 'Poiret One', sans-serif;
+  color: #fff;
+  /* For the future */
+  /* background: no-repeat center url(./assets/card1.2.svg); */
+}
+
 /* ------------------ Boutons ------------------ */
 nav {
   position: relative;
@@ -63,6 +74,8 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* For the future */
+  /* background: no-repeat center url(./assets/card1.1.svg); */
 }
 
 nav ul {
@@ -77,11 +90,13 @@ nav ul {
 
 nav ul li button {
   cursor: pointer;
-  width: 280px; 
-  height: 72px; 
-  border: 2px solid #d7a103;
-  font-size: 36px;
-  font-family: 'Shadow of Xizor', sans-serif;
+  width: 30vw;
+  min-width: 300px;
+  padding: .5rem;
+  border: 2px double #d7a103;
+  font-size: 26px;
+  font-family: 'Poiret One', sans-serif;
+  font-weight: bold;
   color: #fff;
   text-transform: uppercase;
   background: linear-gradient(180deg, #a0601d 0%, #7a3f00 100%);

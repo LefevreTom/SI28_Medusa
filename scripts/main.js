@@ -27,14 +27,25 @@ function load_page(page, e) {
 
 // load objects inside the scene
 function load_object(page) {
-    load_page("objects/"+ page + "/" + page);
+    const url = "objects/" + page + "/" + page + ".html";
+    $.get(url, function (data) {
+        $("#scene").append(data);
+    });
 }
 
 function updateObjects() {
     $("#scene").empty(); // clear scene
-    leftView.forEach(load_object);
-    centerView.forEach(load_object);
-    rightView.forEach(load_object);
+    const currentView = GameSave.getView() || {};
+    if(view === 0) {
+        // load objects for left view
+        (currentView.leftView || leftView).forEach(load_object);
+    } else if(view === 1) {
+        // load objects for center view
+        (currentView.centerView || centerView).forEach(load_object);
+    } else if(view === 2) {
+        // load objects for right view
+        (currentView.rightView || rightView).forEach(load_object);
+    }
 }
 
 // Update the scene based on current view
@@ -86,12 +97,11 @@ function changeScene(scene) {
 
 function newGame() {
     GameSave.reset();
-    changeScene('pages/scene1/mainScene1.html');
+    changeScene('pages/scene0/mainScene0.html');
 }
 
 function continueGame() {
     var floor = GameSave.getProgress().floor;
-    console.log("Continuing to floor " + floor);
     changeScene('pages/scene'+floor+'/mainScene'+floor+'.html');
 }
 
@@ -103,13 +113,13 @@ function closeInteraction(id){
 function revealInteraction(id){
     const interactionBox = document.getElementById(id + '_interaction');
     interactionBox.style.display = 'flex';
-    callTypeWriter();
+    callTypeWriter(id);
 }
 
-function callTypeWriter() {
+function callTypeWriter(objectName) {
     clearTimeout(typeWriterTimeout);
 
-    const $el = $('.typewriter');
+    const $el = $('#'+objectName+'_interaction .text .typewriter');
     const fullText = $el.text();
     const length = fullText.length;
     let character = 0;

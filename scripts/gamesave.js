@@ -44,6 +44,12 @@ const GameSave = (() => {
         return getSave().inventory;
     }
 
+    // --- Check if item exists in inventory ---
+    function hasItem(item) {
+        const data = getSave();
+        return data.inventory.includes(item);
+    }
+
     // --- Reset / clear all data ---
     function reset() {
         localStorage.removeItem(SAVE_KEY);
@@ -73,6 +79,16 @@ const GameSave = (() => {
         return getSave().timer ?? null;
     }
 
+    // --- update view data ---
+    function setView(viewObj) {
+        const data = getSave();
+        data.view = { ...data.view, ...viewObj };
+        save(data);
+    }
+
+    function getView() {
+        return getSave().view;
+    }
 
     // Public API
     return {
@@ -82,9 +98,12 @@ const GameSave = (() => {
         removeItem,
         getInventory,
         reset,
+        hasItem,
         load,
         init,
         setTimer,
-        getTimer
+        getTimer,
+        setView,
+        getView
     };
 })();
