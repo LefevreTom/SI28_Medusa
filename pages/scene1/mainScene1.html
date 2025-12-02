@@ -17,6 +17,16 @@
     <div id="timer" class="timer">05:00</div>
     <!-- Load the sound to play when timer hit 0 -->
     <audio id="timerEndSound" src="sounds/timer_end.mp3" preload="auto"></audio>
+    <!-- Interraction to show when timer hit 0 -->
+    <div class="interaction" id="timerEnd_interaction" style="display:none;">
+        <div class="options">
+            <button onclick="confirmTimerEnd()">Abandonner</button>
+        </div>
+        <div class="text">
+            <p class="typewriter">Qu'est ce qu'il se passe ? Est ce que j'ai pris trop de temps ?</p>
+        </div>
+    </div>
+
     <nav>
         <ul>
             <li>

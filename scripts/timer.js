@@ -61,10 +61,13 @@ function onTimerEnd() {
     // Reset save file completely
     GameSave.reset();
 
-    // Redirect after 4 sec so sound & animation can be seen/heard
-    setTimeout(() => {
-        window.location.href = "../../index.html";
-    }, 4000);
+    // Show the death interaction
+    revealInteraction('timerEnd');
+}
+
+function confirmTimerEnd() {
+    closeInteraction('timerEnd_interaction');
+    window.location.href = "../../index.html";
 }
 
 // Pause timer
