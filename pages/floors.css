@@ -36,7 +36,7 @@ transition: opacity 2s ease-out;
 }
 nav {
 width: 100%;
-height: auto; /* To override the 100% on main.css */
+height: calc(95% - 2vh); /* To override the 100% on main.css */
 }
 nav ul {
 list-style-type: none;
@@ -142,6 +142,7 @@ visibility: hidden; /* hide text initially */
     font-weight: bold;
     font-size: xx-large;
     margin: 2vh 2vh 0 0;
+    height:5%;
 }
 
 .timer-flash {

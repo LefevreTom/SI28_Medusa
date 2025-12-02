@@ -1,6 +1,7 @@
 <div class="object" id="bed" onclick="revealInteraction('bed')"></div>
 <div class="interaction" id="bed_interaction">
     <div class="options" id="bed_options">
+        <button onclick="openbed()">Soulever</button>
         <button onclick="closeInteraction('bed_interaction');">Fermer</button>
     </div>
     <div class="text"> 
@@ -22,6 +23,12 @@
         left: 3vh;
     }
 </style>
-
+    
 <script>
+    // function called when "reading" the bed
+    function openbed(){
+        const interactionBox = document.getElementById('bed_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous regardez en dessous du matelas, il n'y a rien...";
+        callTypeWriter("bed");
+    }
 </script>
