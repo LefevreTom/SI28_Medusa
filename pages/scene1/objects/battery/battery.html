@@ -1,7 +1,7 @@
 <div class="object" id="battery" onclick="revealInteraction('battery')"></div>
 <div class="interaction" id="battery_interaction">
     <div class="options" id="battery_options">
-        <button onclick="pickItem()">Récupérer</button>
+        <button onclick="pickBattery()">Récupérer</button>
         <button onclick="closeInteraction('battery_interaction')">Fermer</button>
     </div>
     <div class="text"> 
@@ -26,10 +26,10 @@
 
 <script>
     // function called when picking up the battery
-    function pickItem(){
+    function pickBattery(){
         GameSave.addItem('battery');
-        closeInteraction('battery_interaction');
-        removeItemAll(leftView, 'battery');
+        newView = removeItemAll(GameSave.getView()["leftView"], 'battery');
+        GameSave.setView({leftView: newView});
         updateObjects();
     }
 </script>

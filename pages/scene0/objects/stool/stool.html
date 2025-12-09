@@ -28,7 +28,7 @@
 <script>
     function pickItem(){
         GameSave.addItem('stool');
-        newView = removeItemAll(centerView, 'stool');
+        newView = removeItemAll(GameSave.getView()["centerView"], 'stool');
         GameSave.setView({centerView: newView});
         updateObjects();
     }

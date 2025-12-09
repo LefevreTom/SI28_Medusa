@@ -70,13 +70,13 @@ const GameSave = (() => {
     // --- Timer ---
     function setTimer(seconds) {
         const data = getSave();
-        data.timer = seconds;
+        data.progress.timer = seconds;
         save(data);
     }
 
     // --- Get timer ---
     function getTimer() {
-        return getSave().timer ?? null;
+        return getSave().progress.timer ?? null;
     }
 
     // --- update view data ---

@@ -38,13 +38,13 @@ function updateObjects() {
     const currentView = GameSave.getView() || {};
     if(view === 0) {
         // load objects for left view
-        (currentView.leftView || leftView).forEach(load_object);
+        (currentView.leftView).forEach(load_object);
     } else if(view === 1) {
         // load objects for center view
-        (currentView.centerView || centerView).forEach(load_object);
+        (currentView.centerView).forEach(load_object);
     } else if(view === 2) {
         // load objects for right view
-        (currentView.rightView || rightView).forEach(load_object);
+        (currentView.rightView).forEach(load_object);
     }
 }
 
@@ -52,6 +52,7 @@ function updateObjects() {
 function updatePosition(background) {
     const leftBtn = document.getElementById('left');
     const rightBtn = document.getElementById('right');
+    const currentView = GameSave.getView();
     // Update background position based on current view
     if(view === 0) {
         background.backgroundPosition = 'left';
@@ -60,7 +61,7 @@ function updatePosition(background) {
         // wait for animation to finish
         setTimeout(() => {    
             // load objects for left view
-            leftView.forEach(load_object);
+            currentView.leftView.forEach(load_object);
         }, 310);
     } else if(view === 1) {
         background.backgroundPosition = 'center';
@@ -70,7 +71,7 @@ function updatePosition(background) {
         // wait for animation to finish
         setTimeout(() => {    
             // load objects for center view
-            centerView.forEach(load_object);
+            currentView.centerView.forEach(load_object);
         }, 310);
     } else if(view === 2) {
         background.backgroundPosition = 'right';
@@ -79,7 +80,7 @@ function updatePosition(background) {
         // wait for animation to finish
         setTimeout(() => {    
             // load objects for right view
-            rightView.forEach(load_object);
+            currentView.rightView.forEach(load_object);
         }, 310);
     }
 }

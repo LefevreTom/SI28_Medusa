@@ -1,8 +1,9 @@
-<div class="object" id="torch" onclick="revealInteraction('torch')"></div>
+<div class="object" id="torch" onclick="revealInteraction('torch'),hasMatches();"></div>
 <div class="interaction" id="torch_interaction">
     <img src="objects/torch/torch.png" alt="torch" class="interaction-image">
     <div class="options" id="torch_options">
-        <button onclick="opentorch()">Ouvrir</button>
+        <button id="lightTorch" onclick="light()">Allumer</button>
+        <button id="pickTorch" onclick="pickItem()">Récupérer</button>
         <button onclick="closeInteraction('torch_interaction');">Fermer</button>
     </div>
     <div class="text"> 
@@ -18,18 +19,39 @@
         -webkit-mask: url(objects/torch/torch.png) center/contain no-repeat;
         mask: url(objects/torch/torch.png) center/contain no-repeat;
         
-        width: 15vh;
+        width: 7vh;
         height: 15vh;
-        top: 45vh;
-        left: 116vh;
+        top: 44.7vh;
+        left: 122vh;
+    }
+    #lightTorch, #pickTorch {
+        display: none;
     }
 </style>
 
 <script>
+    var lit = false;
     function pickItem(){
         GameSave.addItem('torch');
-        newView = removeItemAll(centerView, 'torch');
+        newView = removeItemAll(GameSave.getView()["centerView"], 'torch');
         GameSave.setView({centerView: newView});
         updateObjects();
+    }
+    function light(){
+        const image = document.querySelector('#torch_interaction .interaction-image');
+        image.src = "objects/torch/torch_lit.png";
+        const interactionBox = document.getElementById('torch_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous allumez la lampe.";
+        callTypeWriter("torch");
+        document.getElementById('lightTorch').style.display = 'none';
+        document.getElementById('pickTorch').style.display = 'block';
+        lit = true;
+    }
+
+    function hasMatches(){
+        if (GameSave.hasItem('matches') && !lit){
+            document.getElementById('lightTorch').style.display = 'block';
+            return;
+        }
     }
 </script>

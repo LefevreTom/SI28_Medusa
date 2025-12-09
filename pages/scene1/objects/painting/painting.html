@@ -1,8 +1,8 @@
-<div class="object" id="painting" onclick="revealInteraction('painting');testTorch();"></div>
+<div class="object" id="painting" onclick="revealInteraction('painting');hasTorch();"></div>
 <div class="interaction" id="painting_interaction">
     <img src="objects/painting/painting.png" alt="painting" class="interaction-image">
     <div class="options" id="painting_options">
-        <button onclick="openpainting()" class="painting-locked">Approcher la torche</button>
+        <button onclick="openpainting()" id="painting-locked">Approcher la torche</button>
         <button onclick="closeInteraction('painting_interaction');">Fermer</button>
     </div>
     <div class="text"> 
@@ -23,7 +23,7 @@
         top: 23vh;
         left: 57vh;
     }
-    .painting-locked {
+    #painting-locked {
         display: none;
     }
 </style>
@@ -36,12 +36,15 @@
         const interactionBox = document.getElementById('painting_interaction');
         interactionBox.querySelector('.text p').innerText = "Vous approchez la torche du tableau et découvrez un message caché.";
         callTypeWriter("painting");
+        document.querySelector('#painting_options #painting-locked').style.display = 'none';
     }
 
-    function testTorch(){
-        const paintingOption = document.querySelector('#painting_options .painting-locked');
+    function hasTorch(){
+        const image = document.querySelector('#painting_interaction .interaction-image');
+        const paintingOption = document.querySelector('#painting_options #painting-locked');
 
-        if(GameSave.hasItem('hasTorch')){
+        image.src = "objects/painting/painting.png";
+        if(GameSave.hasItem('torch')){
             paintingOption.style.display = 'block';
         } else {
             paintingOption.style.display = 'none';

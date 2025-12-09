@@ -4,9 +4,9 @@ let view = 1; /* 0 = left, 1 = center, 2 = right */
 // Scene name should be the same as the folder name 
 let sceneName = "scene1";
 
-let leftView = Array.from(['battery', 'radio']);
-let centerView = Array.from(['painting', 'torch']);
-let rightView = Array.from(['matches', 'jerrycan']);
+let scene1leftView = Array.from(['battery', 'radio']);
+let scene1centerView = Array.from(['painting', 'torch']);
+let scene1rightView = Array.from(['matches', 'jerrycan']);
 
 // Save the game before the page is unloaded
 window.addEventListener("beforeunload", GameSave.save);
@@ -23,7 +23,7 @@ let init = () => {
     }, 2000);
     
     // load objects for center view
-    centerView.forEach(load_object);
+    scene1centerView.forEach(load_object);
 
     // Event listener for key inputs
     document.addEventListener('keydown', function(event) {
@@ -34,7 +34,24 @@ let init = () => {
         }
     });
     
-    updateViews();
+    // Recreate game views
+    if (GameSave.getProgress().floor === 0) {
+        let prog = GameSave.getProgress()
+        let inv = GameSave.getInventory()
+        GameSave.reset();
+        GameSave.init({
+            progress: prog,
+            inventory: inv,
+            view: {
+                leftView: scene1leftView,
+                centerView: scene1centerView,
+                rightView: scene1rightView
+            }
+        });
+        GameSave.setProgress({floor: 1});
+    }
+
+    // updateViews();
 }
 
 // Launch game

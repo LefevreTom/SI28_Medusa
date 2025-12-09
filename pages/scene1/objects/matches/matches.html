@@ -2,7 +2,7 @@
 <div class="interaction" id="matches_interaction">
     <img src="objects/matches/matches.png" alt="matches" class="interaction-image">
     <div class="options" id="matches_options">
-        <button onclick="pickItem()">Récupérer</button>
+        <button onclick="pickMatches()">Récupérer</button>
         <button onclick="closeInteraction('matches_interaction');">Fermer</button>
     </div>
     <div class="text"> 
@@ -26,10 +26,10 @@
 </style>
 
 <script>
-    function pickItem(){
+    function pickMatches(){
         GameSave.addItem('matches');
-        newView = removeItemAll(centerView, 'matches');
-        GameSave.setView({centerView: newView});
+        newView = removeItemAll(GameSave.getView()["rightView"], 'matches');
+        GameSave.setView({rightView: newView});
         updateObjects();
     }
 </script>

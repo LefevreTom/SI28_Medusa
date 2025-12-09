@@ -2,11 +2,11 @@
 <div class="interaction" id="jerrycan_interaction">
     <img src="objects/jerrycan/jerrycan.png" alt="jerrycan" class="interaction-image">
     <div class="options" id="jerrycan_options">
-        <button onclick="openjerrycan()">Récupérer</button>
+        <button onclick="pickJerry()">Récupérer</button>
         <button onclick="closeInteraction('jerrycan_interaction');">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">Une trappe, elle à l'air de ne pas avoir de serrure.</p>
+        <p class="typewriter">Un jerrican d'essence plein.</p>
     </div>
 </div>
 
@@ -27,10 +27,10 @@
 
 <script>
     // function called when picking up the jerrycan
-    function pickItem(){
+    function pickJerry(){
         GameSave.addItem('jerrycan');
-        closeInteraction('jerrycan_interaction');
-        removeItemAll(rightView, 'jerrycan');
+        newView = removeItemAll(GameSave.getView()["rightView"], 'jerrycan');
+        GameSave.setView({rightView: newView});
         updateObjects();
     }
 </script>

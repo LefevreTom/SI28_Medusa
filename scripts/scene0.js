@@ -4,12 +4,12 @@ let view = 1; /* 0 = left, 1 = center, 2 = right */
 // Scene name should be the same as the folder name 
 let sceneName = "scene0";
 
-let centerView = Array.from(['door', 'bed', 'trapdoor', 'stool']);
+let scene0centerView = Array.from(['door', 'bed', 'trapdoor', 'stool']);
 
 GameSave.init({
-  progress: { floor: 0, time: 0 },
+  progress: { floor: 0 },
   inventory: [],
-  view: {centerView: centerView}
+  view: {centerView: scene0centerView}
 });
 
 // Save the game before the page is unloaded
@@ -27,7 +27,7 @@ let init = () => {
     }, 2000);
     
     // load objects for center view
-    centerView.forEach(load_object);
+    scene0centerView.forEach(load_object);
 }
 
 // Launch game
