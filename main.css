@@ -102,11 +102,10 @@ nav ul {
 
 nav ul li button {
   cursor: pointer;
-  width: 30vw;
   min-width: 300px;
   max-width: 450px;
   padding: .5rem;
-  border: 2px double #d7a103;
+  border: 4px double #d7a103;
   font-size: 26px;
   font-family: 'Poiret One', sans-serif;
   font-weight: bold;
