@@ -3,7 +3,7 @@
 html, body {
   margin: 0;
   height: 100vh;
-  background: #000 url(./assets/background.jpeg) center/cover no-repeat;
+  background: #000 url(./assets/Floor1.jpg) center/cover no-repeat;
   animation: pan 60s infinite alternate linear;
   font-family: 'Poiret One', sans-serif;
   color: #d7a103;

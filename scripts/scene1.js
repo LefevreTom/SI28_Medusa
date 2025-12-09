@@ -4,14 +4,9 @@ let view = 1; /* 0 = left, 1 = center, 2 = right */
 // Scene name should be the same as the folder name 
 let sceneName = "scene1";
 
-let leftView = Array.from(['book']);
-let centerView = Array.from([]);
-let rightView = Array.from([]);
-
-// GameSave.init({
-//   progress: { floor: 1, time: 0 },
-//   inventory: []
-// });
+let leftView = Array.from(['battery', 'radio']);
+let centerView = Array.from(['painting', 'torch']);
+let rightView = Array.from(['matches', 'jerrycan']);
 
 // Save the game before the page is unloaded
 window.addEventListener("beforeunload", GameSave.save);

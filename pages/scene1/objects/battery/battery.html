@@ -1,0 +1,35 @@
+<div class="object" id="battery" onclick="revealInteraction('battery')"></div>
+<div class="interaction" id="battery_interaction">
+    <div class="options" id="battery_options">
+        <button onclick="pickItem()">Récupérer</button>
+        <button onclick="closeInteraction('battery_interaction')">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Simple batterie...</p>
+    </div>
+</div>
+
+<style>
+    #battery {
+        background-image: url(objects/battery/battery.png);
+        
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/battery/battery.png) center/contain no-repeat;
+        mask: url(objects/battery/battery.png) center/contain no-repeat;
+
+        width: 21vh;
+        height: 7vh;
+        top: 75.4vh;
+        left: 29.5vh;
+    }
+</style>
+
+<script>
+    // function called when picking up the battery
+    function pickItem(){
+        GameSave.addItem('battery');
+        closeInteraction('battery_interaction');
+        removeItemAll(leftView, 'battery');
+        updateObjects();
+    }
+</script>

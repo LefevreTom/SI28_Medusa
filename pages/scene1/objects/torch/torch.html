@@ -1,0 +1,35 @@
+<div class="object" id="torch" onclick="revealInteraction('torch')"></div>
+<div class="interaction" id="torch_interaction">
+    <img src="objects/torch/torch.png" alt="torch" class="interaction-image">
+    <div class="options" id="torch_options">
+        <button onclick="opentorch()">Ouvrir</button>
+        <button onclick="closeInteraction('torch_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Une torche /s.</p>
+    </div>
+</div>
+
+<style>
+    #torch {
+        background: url(objects/torch/torch.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/torch/torch.png) center/contain no-repeat;
+        mask: url(objects/torch/torch.png) center/contain no-repeat;
+        
+        width: 19vh;
+        height: 31vh;
+        top: 33.4vh;
+        left: 79.7vh;
+    }
+</style>
+
+<script>
+    function pickItem(){
+        GameSave.addItem('torch');
+        newView = removeItemAll(centerView, 'torch');
+        GameSave.setView({centerView: newView});
+        updateObjects();
+    }
+</script>

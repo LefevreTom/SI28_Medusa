@@ -1,0 +1,50 @@
+<div class="object" id="painting" onclick="revealInteraction('painting');testTorch();"></div>
+<div class="interaction" id="painting_interaction">
+    <img src="objects/painting/painting.png" alt="painting" class="interaction-image">
+    <div class="options" id="painting_options">
+        <button onclick="openpainting()" class="painting-locked">Approcher la torche</button>
+        <button onclick="closeInteraction('painting_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Une peinture.</p>
+    </div>
+</div>
+
+<style>
+    #painting {
+        background: url(objects/painting/painting.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/painting/painting.png) center/contain no-repeat;
+        mask: url(objects/painting/painting.png) center/contain no-repeat;
+        
+        width: 63vh;
+        height: 26vh;
+        top: 63vh;
+        left: 3vh;
+    }
+    .painting-locked {
+        display: none;
+    }
+</style>
+    
+<script>
+    // function called when "reading" the painting
+    function openpainting(){
+        const image = document.querySelector('#painting_interaction .interaction-image');
+        image.src = "objects/painting/painting_revealed.png";
+        const interactionBox = document.getElementById('painting_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous approchez la torche du tableau et découvrez un message caché.";
+        callTypeWriter("painting");
+    }
+
+    function testTorch(){
+        const paintingOption = document.querySelector('#painting_options .painting-locked');
+
+        if(GameSave.hasItem('hasTorch')){
+            paintingOption.style.display = 'block';
+        } else {
+            paintingOption.style.display = 'none';
+        }
+    }
+</script>
