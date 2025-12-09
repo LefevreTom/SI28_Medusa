@@ -137,7 +137,7 @@ function callTypeWriter(objectName) {
             if (character < length) {
                 typeWriter();
             }
-        }, 50);
+        }, 25);
     }());
 }
 
