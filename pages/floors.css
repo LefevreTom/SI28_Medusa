@@ -11,12 +11,14 @@ HTML {
     background: #000;
 }
 body {
-    background-image: url(../assets/background.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     margin: 0;
-    height: 100vh;
+}
+body, HTML {
+  width: 100%;
+  height: 100%;
+}
+.game-container {
+    background-image: url(../assets/background.jpeg);
     transition: background-position .3s ease-in-out;
 }
 #UI {
@@ -97,8 +99,8 @@ nav ul li button img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: #000000cc;
     font-weight: medium;
     display: none;
@@ -175,8 +177,8 @@ nav ul li button img {
     background-color: white;
     color: black;
     font-family: 'Poiret One', sans-serif;
-    font-size: 32px;
-    padding: 8px 32px;
+    font-size: 150%;
+    padding: 1% 2%;
     border-left: 4px solid #603604;
     border-bottom: 4px solid #603604;
     border-top: none;

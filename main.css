@@ -3,10 +3,13 @@
 html, body {
   margin: 0;
   height: 100vh;
-  background: #000 url(./assets/Floor1.jpg) center/cover no-repeat;
-  animation: pan 60s infinite alternate linear;
   font-family: 'Poiret One', sans-serif;
   color: #d7a103;
+}
+
+.game-container {
+  background: #000 url(./assets/Floor1.jpg) center/cover no-repeat;
+  animation: pan 60s infinite alternate linear;
 }
 
 @keyframes pan {
@@ -35,12 +38,10 @@ html, body {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px; height: 500px;
+  width: 60%;
+  height: 66%;
   display: flex;
   flex-direction: column;
-  /* padding: 8% 0 0 0;
-  gap: 8%;
-  background: no-repeat center url(./assets/card.svg); */
 }
 
 .card-svg {
@@ -59,7 +60,7 @@ h1{
   text-align: center;
   margin: 0;
   font-weight: bold;
-  font-size: 36px;
+  font-size: 190%;
   font-family: 'Poiret One', sans-serif;
   color: #fff;
 }
@@ -70,7 +71,7 @@ h1::before {
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  height: 220%;
+  height: 270%;
   background: no-repeat center url(./assets/card1.2.svg);
   z-index: -1;
   pointer-events: none;
@@ -94,19 +95,23 @@ nav ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 37%;
   gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+nav ul li {
+  width: 100%;
+}
+
 nav ul li button {
   cursor: pointer;
-  min-width: 300px;
-  max-width: 450px;
+  width: 100%;
   padding: .5rem;
   border: 4px double #d7a103;
-  font-size: 26px;
+  font-size: 150%;
   font-family: 'Poiret One', sans-serif;
   font-weight: bold;
   color: #fff;

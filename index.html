@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Medusa</title>
+  <link rel="stylesheet" href="game-container.css" />
   <link rel="stylesheet" href="main.css" />
   <script src="scripts/gamesave.js"></script>
   <script src="scripts/menu.js"></script>
@@ -11,18 +12,22 @@
 </head>
 <body>
   <div id="transitionScreen"></div>
-
-  <div id="UI">
-    <div class="menu-card">
-      <!-- <img src="./assets/card.svg" alt="Card Frame" class="card-svg" /> -->
-      <h1>Accueil</h1>
-      <nav>
-        <ul>
-          <li><button id="continueGame" onclick="continueGame()">Continuer</button></li>
-          <li><button id="newGame" onclick="newGame()">Nouveau jeu</button></li>
-          <li><button id="settings">Paramètres</button></li>
-        </ul>
-      </nav>
+  <!-- Wrapper for black letterbox bars -->
+  <div class="game-wrapper">
+    <div class="game-container">
+      <div id="UI">
+        <div class="menu-card">
+          <!-- <img src="./assets/card.svg" alt="Card Frame" class="card-svg" /> -->
+          <h1>Accueil</h1>
+          <nav>
+            <ul>
+              <li><button id="continueGame" onclick="continueGame()">Continuer</button></li>
+              <li><button id="newGame" onclick="newGame()">Nouveau jeu</button></li>
+              <li><button id="settings">Paramètres</button></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
   </div>
 </body>

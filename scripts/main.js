@@ -6,7 +6,7 @@ let typeWriterTimeout;
 function changeView(direction) {
     $("#scene").empty(); // Clear current scene
 
-    const background = document.body.style;
+    const background = $(".game-container").style;
     // Change view based on direction
     if(direction === 'left' && view > 0) {
         background.backgroundPosition = 'left';
@@ -166,3 +166,36 @@ function updateViews() {
         });
     });
 }
+
+function scaleGameContainer() {
+    const container = document.getElementById('game-container');
+    const wrapper = document.getElementById('game-wrapper');
+    
+    // Design resolution
+    const designWidth = container.offsetWidth;
+    const designHeight = container.offsetHeight;
+    const designRatio = designWidth / designHeight;
+    
+    // Available space
+    const availableWidth = wrapper.clientWidth;
+    const availableHeight = wrapper.clientHeight;
+    const availableRatio = availableWidth / availableHeight;
+    
+    let scale;
+
+    if (availableRatio > designRatio) {
+        // Window is wider than design ratio - fit to height
+        scale = availableHeight / designHeight;
+    } else {
+        // Window is taller than design ratio - fit to width
+        scale = availableWidth / designWidth;
+    }
+    
+    // Apply the scale
+    container.style.transform = `scale(${scale})`;
+}
+
+// Multiple listeners to ensure it runs
+document.addEventListener('DOMContentLoaded', scaleGameContainer);
+window.addEventListener('load', scaleGameContainer);
+window.addEventListener('resize', scaleGameContainer);

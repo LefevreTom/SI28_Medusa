@@ -34,6 +34,11 @@ let init = () => {
         }
     });
     
+    var scene1Views = {
+        leftView: scene1leftView, 
+        centerView: scene1centerView, 
+        rightView: scene1rightView
+    };
     // Recreate game views
     if (GameSave.getProgress().floor === 0) {
         let prog = GameSave.getProgress()
@@ -42,17 +47,29 @@ let init = () => {
         GameSave.init({
             progress: prog,
             inventory: inv,
-            view: {
-                leftView: scene1leftView,
-                centerView: scene1centerView,
-                rightView: scene1rightView
-            }
+            view: scene1Views
         });
         GameSave.setProgress({floor: 1});
     }
 
+    // Preload images
+    // For each objects in scene1Views
+    Object.values(scene1Views).flat().forEach(item => {
+        preload(`../../pages/scene1/objects/${item}/${item}.png`);
+    });
+
     // updateViews();
 }
+
+var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+        console.log('preloading :' + preload.arguments[i]);
+    }
+}
+
 
 // Launch game
 window.onload = init;
