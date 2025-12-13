@@ -5,8 +5,8 @@ let typeWriterTimeout;
 // Change the view based on input
 function changeView(direction) {
     $("#scene").empty(); // Clear current scene
-
-    const background = $(".game-container").style;
+    
+    const background = document.getElementById('game-container').style;
     // Change view based on direction
     if(direction === 'left' && view > 0) {
         background.backgroundPosition = 'left';
