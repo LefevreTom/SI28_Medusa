@@ -4,7 +4,7 @@ let view = 1; /* 0 = left, 1 = center, 2 = right */
 // Scene name should be the same as the folder name 
 let sceneName = "scene0";
 
-let scene0centerView = Array.from(['door', 'bed', 'trapdoor', 'stool']);
+let scene0centerView = Array.from(['door', 'bed', 'trapdoor', 'stool', 'shrooms']);
 
 GameSave.init({
   progress: { floor: 0 },

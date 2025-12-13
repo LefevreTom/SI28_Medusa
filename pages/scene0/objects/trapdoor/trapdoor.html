@@ -28,12 +28,18 @@
 <script>
     function opentrapdoor(){
         if (GameSave.hasItem('stool')){
-            const interactionBox = document.getElementById('trapdoor_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous utilisez le tabouret pour atteindre la trappe, elle s'ouvre.";
-            callTypeWriter("trapdoor");
+            if (GameSave.hasItem('shrooms')){
+                const interactionBox = document.getElementById('trapdoor_interaction');
+                interactionBox.querySelector('.text p').innerText = "Vous utilisez le tabouret pour atteindre la trappe, elle s'ouvre.";
+                callTypeWriter("trapdoor");
 
-            let options = document.getElementById('trapdoor_options');
-            options.innerHTML = `<button onclick="Leave()">Sortir</button>`;
+                let options = document.getElementById('trapdoor_options');
+                options.innerHTML = `<button onclick="Leave()">Sortir</button>`;
+                return;
+            }
+            const interactionBox = document.getElementById('trapdoor_interaction');
+            interactionBox.querySelector('.text p').innerText = "Je devrais peut être récupérer tout ce que je trouve avant d'avancer...";
+            callTypeWriter("trapdoor");
             return;
         }
         else{

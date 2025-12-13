@@ -154,14 +154,14 @@ nav ul li button img {
     left: 20px;
     right: 20px;
     background-color: white;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     border: 2px solid black;
     border-radius: 12px;
     clip-path: polygon(0 0, calc(100% - 230px) 0, calc(100% - 230px) 60px, 100% 60px, 100% 100%, 0 100%);
 }
 .interaction .text p{
     margin-top: 0;
-    font-size: x-large;
+    font-size: 120%;
     font-family: "Montagu Slab", serif;
 }
 .typewriter {

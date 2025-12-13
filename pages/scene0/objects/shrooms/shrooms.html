@@ -1,0 +1,36 @@
+<div class="object" id="shrooms" onclick="revealInteraction('shrooms')"></div>
+<div class="interaction" id="shrooms_interaction">
+    <img src="objects/shrooms/shrooms.png" alt="shrooms" class="interaction-image">
+    <div class="options" id="shrooms_options">
+        <button onclick="pickShrooms()">Prendre</button>
+        <button onclick="closeInteraction('shrooms_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Des fioles de différentes couleurs, cela doit être cette fameuse drogue.</p>
+    </div>
+</div>
+
+<style>
+    #shrooms {
+        background: url(objects/shrooms/shrooms.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/shrooms/shrooms.png) center/contain no-repeat;
+        mask: url(objects/shrooms/shrooms.png) center/contain no-repeat;
+        
+        width: 6%;
+        height: 10%;
+        top: 57.4%;
+        left: 32%;
+    }
+</style>
+
+<script>
+    // function called when "reading" the shrooms
+    function pickShrooms(){
+        GameSave.addItem('shrooms');
+        newView = removeItemAll(GameSave.getView()["centerView"], 'shrooms');
+        GameSave.setView({centerView: newView});
+        updateObjects();
+    }
+</script>
