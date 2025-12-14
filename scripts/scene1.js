@@ -6,7 +6,7 @@ let sceneName = "scene1";
 
 let scene1leftView = Array.from(['battery', 'radio']);
 let scene1centerView = Array.from(['painting', 'torch']);
-let scene1rightView = Array.from(['matches', 'jerrycan']);
+let scene1rightView = Array.from(['matches', 'jerrycan', 'digicode']);
 
 // Save the game before the page is unloaded
 window.addEventListener("beforeunload", GameSave.save);
@@ -46,9 +46,11 @@ let init = () => {
     if (GameSave.getProgress().floor === 0) {
         let prog = GameSave.getProgress()
         let inv = GameSave.getInventory()
+        let shr = GameSave.getShrooms()
         GameSave.reset();
         GameSave.init({
             progress: prog,
+            shroomCount: shr,
             inventory: inv,
             view: scene1Views
         });
@@ -73,6 +75,32 @@ function preload() {
     }
 }
 
+function shroomEffect() {
+    console.log("SHROOM CLICKED");
+    let currentShrooms = GameSave.getShrooms();
+    let container = document.getElementById("game-container");
+    if (currentShrooms > 0 && canShroom) {
+        GameSave.setShrooms(currentShrooms - 1);
+        if (currentShrooms - 1 === 0) { document.getElementById("ui-shroom").style.filter = "grayscale(1)"; }
+        document.getElementById("shroom-count").textContent = GameSave.getShrooms();
+        // Apply effect 
+        container.classList.remove("shroom-effect-reverse");
+        container.classList.add("shroom-effect");
+        canShroom = false;
+        // Change background image
+        document.getElementById("game-container").style.backgroundImage = "url(../../assets/Floor1numbers.jpg)";
+        // Remove effect after 10 seconds
+        setTimeout(() => {
+            document.getElementById("game-container").style.backgroundImage = "url(../../assets/Floor1.jpg)";
+            container.classList.remove("shroom-effect");
+            container.classList.add("shroom-effect-reverse");
+            canShroom = true;
+        }, 15000);
+    }
+}
+
+// add shroom click listener
+document.getElementById("ui-shroom").addEventListener("click", shroomEffect);
 
 // Launch game
 window.onload = init;

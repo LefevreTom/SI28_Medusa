@@ -19,7 +19,7 @@ body, HTML {
 }
 .game-container {
     background-image: url(../assets/background.jpeg);
-    transition: background-position .3s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 #UI {
     position: absolute;

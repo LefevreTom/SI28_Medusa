@@ -1,0 +1,65 @@
+<div class="object" id="digicode" onclick="revealInteraction('digicode')"></div>
+<div class="interaction" id="digicode_interaction">
+    <img src="objects/digicode/digicode.png" alt="digicode" class="interaction-image">
+    <div class="options" id="digicode_options">
+        <button onclick="choice1('0')">0</button>
+        <button onclick="choice1('2')">2</button>
+        <button onclick="choice1('6')">6</button>
+        <button onclick="choice1('7')">7</button>
+        <button onclick="closeInteraction('digicode_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Un digicode, seules quelques touches sont usées. Ça me facilite le travail.</p>
+    </div>
+</div>
+
+<style>
+    #digicode {
+        background: url(objects/digicode/digicode.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/digicode/digicode.png) center/contain no-repeat;
+        mask: url(objects/digicode/digicode.png) center/contain no-repeat;
+        
+        width: 4%;
+        height: 8%;
+        top: 40%;
+        left: 65.8%;
+    }
+</style>
+
+<script>
+    function choice1(number) {
+        const interactionBox = document.getElementById('digicode_interaction');
+        let textElement = interactionBox.querySelector('.text p');
+        if (!interactionBox.dataset.code) {
+            interactionBox.dataset.code = '';
+        }
+        interactionBox.dataset.code += number;
+
+        if (interactionBox.dataset.code.length === 3) {
+            if (interactionBox.dataset.code === '672') {
+                opendigicode();
+            } else {
+                textElement.innerText = "Code incorrect. Réessayez.";
+                callTypeWriter("digicode");
+            }
+            interactionBox.dataset.code = '';
+        } else {
+            textElement.innerText = `Code en cours: ${interactionBox.dataset.code}`;
+            callTypeWriter("digicode");
+        }
+    }
+    function opendigicode(){
+        const interactionBox = document.getElementById('digicode_interaction');
+        interactionBox.querySelector('.text p').innerText = "Clic ! La bibliothèque s'ouvre et laisse révéler un passage secret.";
+        callTypeWriter("digicode");
+
+        let options = document.getElementById('digicode_options');
+        options.innerHTML = `<button onclick="Leave()">Y entrer</button>`;
+        return;
+    }
+    function Leave(){
+        window.location.href = "../../../pages/scene2/mainScene2.html";
+    }
+</script>
