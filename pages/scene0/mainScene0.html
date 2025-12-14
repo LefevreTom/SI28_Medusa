@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="../../game-container.css" />
     <link rel="stylesheet" href="../floors.css">
     <script src="../../imports/jquery-3.7.1.min.js"></script>
-    <script src="../../scripts/main.js"></script>
-    <script src="../../scripts/gamesave.js"></script>
-    <script src="../../scripts/timer.js"></script>
-    <script src="../../scripts/scene0.js"></script>
 </head>
 <body>
 <div id="transitionScreen"></div>
@@ -18,6 +14,10 @@
 <div class="game-wrapper" id="game-wrapper">
     <div class="game-container" id="game-container">
         <div id="UI">
+            <div id="ui-shroom">
+                <img src="../../assets/shroom.png" alt="Shroom Icon" />
+                <span id="shroom-count">5</span>
+            </div>
             <div id="timer" class="timer">05:00</div>
             <!-- Load the sound to play when timer hit 0 -->
             <audio id="timerEndSound" src="sounds/timer_end.mp3" preload="auto"></audio>
@@ -43,8 +43,15 @@
 .game-container {
     background-image: url(../../assets/Floor0.jpg);
 }
+#ui-shroom {
+    display: none;
+}
 </style>
 
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/gamesave.js"></script>
+<script src="../../scripts/timer.js"></script>
+<script src="../../scripts/scene0.js"></script>
 <script>
     initTimer();
 </script>

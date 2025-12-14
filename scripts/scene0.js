@@ -8,6 +8,7 @@ let scene0centerView = Array.from(['door', 'bed', 'trapdoor', 'stool', 'shrooms'
 
 GameSave.init({
   progress: { floor: 0 },
+  shroomCount: 5,
   inventory: [],
   view: {centerView: scene0centerView}
 });

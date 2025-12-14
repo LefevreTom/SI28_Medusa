@@ -90,6 +90,16 @@ const GameSave = (() => {
         return getSave().view;
     }
 
+    function setShrooms(count) {
+        const data = getSave();
+        data.shroomCount = count;
+        save(data);
+    }
+
+    function getShrooms() {
+        return getSave().shroomCount ?? 0;
+    }
+
     // Public API
     return {
         setProgress,
@@ -104,6 +114,8 @@ const GameSave = (() => {
         setTimer,
         getTimer,
         setView,
-        getView
+        getView,
+        setShrooms,
+        getShrooms
     };
 })();

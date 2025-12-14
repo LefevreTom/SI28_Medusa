@@ -1,5 +1,6 @@
 // initialize variables
 let typeWriterTimeout;
+var canShroom = true;
 
 
 // Change the view based on input
@@ -166,6 +167,29 @@ function updateViews() {
         });
     });
 }
+
+function shroomEffect() {
+    let currentShrooms = GameSave.getShrooms();
+    let container = document.getElementById("game-container");
+    if (currentShrooms > 0 && canShroom) {
+        GameSave.setShrooms(currentShrooms - 1);
+        if (currentShrooms - 1 === 0) { document.getElementById("ui-shroom").style.filter = "grayscale(1)"; }
+        document.getElementById("shroom-count").textContent = GameSave.getShrooms();
+        // Apply effect 
+        container.classList.remove("shroom-effect-reverse");
+        container.classList.add("shroom-effect");
+        canShroom = false;
+        // Remove effect after 10 seconds
+        setTimeout(() => {
+            container.classList.remove("shroom-effect");
+            container.classList.add("shroom-effect-reverse");
+            canShroom = true;
+        }, 15000);
+    }
+}
+
+// add shroom click listener
+document.getElementById("ui-shroom").addEventListener("click", shroomEffect);
 
 function scaleGameContainer() {
     const container = document.getElementById('game-container');

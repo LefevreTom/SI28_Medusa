@@ -2,11 +2,11 @@
 let view = 1; /* 0 = left, 1 = center, 2 = right */
 
 // Scene name should be the same as the folder name 
-let sceneName = "scene1";
+let sceneName = "scene2";
 
-let scene1leftView = Array.from(['battery', 'radio']);
-let scene1centerView = Array.from(['painting', 'torch']);
-let scene1rightView = Array.from(['matches', 'jerrycan']);
+let scene2leftView = Array.from(['battery', 'radio']);
+let scene2centerView = Array.from(['painting', 'torch']);
+let scene2rightView = Array.from(['matches', 'jerrycan']);
 
 // Save the game before the page is unloaded
 window.addEventListener("beforeunload", GameSave.save);
@@ -23,7 +23,7 @@ let init = () => {
     }, 2000);
     
     // load objects for center view
-    scene1centerView.forEach(load_object);
+    scene2centerView.forEach(load_object);
 
     // Set initial shroom count in UI
     document.getElementById("shroom-count").textContent = GameSave.getShrooms();
@@ -37,10 +37,10 @@ let init = () => {
         }
     });
     
-    var scene1Views = {
-        leftView: scene1leftView, 
-        centerView: scene1centerView, 
-        rightView: scene1rightView
+    var scene2Views = {
+        leftView: scene2leftView, 
+        centerView: scene2centerView, 
+        rightView: scene2rightView
     };
     // Recreate game views
     if (GameSave.getProgress().floor === 0) {
@@ -50,15 +50,15 @@ let init = () => {
         GameSave.init({
             progress: prog,
             inventory: inv,
-            view: scene1Views
+            view: scene2Views
         });
         GameSave.setProgress({floor: 1});
     }
 
     // Preload images
-    // For each objects in scene1Views
-    Object.values(scene1Views).flat().forEach(item => {
-        preload(`../../pages/scene1/objects/${item}/${item}.png`);
+    // For each objects in scene2Views
+    Object.values(scene2Views).flat().forEach(item => {
+        preload(`../../pages/scene2/objects/${item}/${item}.png`);
     });
 
     // updateViews();

@@ -194,3 +194,54 @@ nav ul li button img {
     from { background-color: rgba(255, 0, 0, 0.249); }
     to   { background-color: rgba(139, 0, 0, 0.249); }
 }
+
+#ui-shroom {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    width: 8%;
+    height: auto;
+    z-index: 100;
+    cursor: pointer;
+}
+#ui-shroom img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: rotate(-10deg);
+    transition: all 0.3s ease-in-out;
+}
+#ui-shroom:hover img {
+    transform: scale(1.1) rotate(-15deg);
+}
+#ui-shroom #shroom-count {
+    position: absolute;
+    bottom: 4%;
+    right: 4%;
+    background-color: white;
+    color: black;
+    font-family: 'Poiret One', sans-serif;
+    font-size: 120%;
+    padding: 2% 5%;
+    border: 2px solid #603604;
+    border-radius: 7px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.shroom-effect {
+    animation: shroomEffect 3s ease-in-out infinite alternate;
+}
+@keyframes shroomEffect {
+    0% { filter: hue-rotate(0deg) blur(0px);}
+    50% { filter: hue-rotate(90deg) blur(1px);}
+    100% { filter: hue-rotate(180deg) blur(2px); }
+}
+.shroom-effect-reverse {
+    animation: shroomEffectReverse 3s ease-in-out;
+}
+@keyframes shroomEffectReverse {
+    0% { filter: hue-rotate(180deg) blur(2px);}
+    50% { filter: hue-rotate(90deg) blur(1px);}
+    100% { filter: hue-rotate(0deg) blur(0px);}
+}
