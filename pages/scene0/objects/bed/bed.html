@@ -6,7 +6,7 @@
         <button onclick="closeInteraction('bed_interaction');">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">Un matelas.</p>
+        <p class="typewriter">Un vieux matelas humide, couvert de moisissures</p>
     </div>
 </div>
 
@@ -29,7 +29,7 @@
     // function called when "reading" the bed
     function openbed(){
         const interactionBox = document.getElementById('bed_interaction');
-        interactionBox.querySelector('.text p').innerText = "Vous regardez en dessous du matelas, il n'y a rien...";
+        interactionBox.querySelector('.text p').innerText = "Rien en dessous, à part un rat mort";
         callTypeWriter("bed");
     }
 </script>

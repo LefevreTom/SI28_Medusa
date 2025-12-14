@@ -8,7 +8,7 @@
         <button onclick="closeInteraction('radio_interaction');">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">Un vieux poste de radio.</p>
+        <p class="typewriter">Une vieille radio, elle a clairement survécu à la guerre de l’eau</p>
     </div>
 </div>
 
@@ -38,7 +38,7 @@
     function openradio(){
         if (GameSave.hasItem('battery')){
             const interactionBox = document.getElementById('radio_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous insérez la batterie dans le poste de radio.";
+            interactionBox.querySelector('.text p').innerText = "La batterie est insérée dans le poste";
             hasBattery = true;
             GameSave.removeItem('battery');
             document.getElementById('batteryRadio').style.display = 'none'; 
@@ -48,7 +48,7 @@
         }
         else{
             const interactionBox = document.getElementById('radio_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous essayez de l'allumer, mais il lui manque une source d'énergie.";
+            interactionBox.querySelector('.text p').innerText = "Génial, elle a plus de batterie";
             callTypeWriter("radio");
             return;
         }
@@ -56,7 +56,7 @@
     function turnOn(){
         if (hasBattery && !radioOn){
             const interactionBox = document.getElementById('radio_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous allumez le poste de radio.";
+            interactionBox.querySelector('.text p').innerText = "Des grésillements… puis une musique se lance";
             radioOn = true;
             
             const onRadioOption = document.querySelector('#radio_options #onRadio');
@@ -71,7 +71,7 @@
     function turnOff(){
         if (hasBattery && radioOn){
             const interactionBox = document.getElementById('radio_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous éteignez le poste de radio.";
+            interactionBox.querySelector('.text p').innerText = "Le poste radio s’éteint dans un claquement sec";
             radioOn = false;
             
             const onRadioOption = document.querySelector('#radio_options #onRadio');

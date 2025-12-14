@@ -6,7 +6,7 @@
         <button onclick="closeInteraction('trapdoor_interaction');">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">Une trappe, elle à l'air de ne pas avoir de serrure.</p>
+        <p class="typewriter">Une trappe, elle à l'air entrouverte</p>
     </div>
 </div>
 
@@ -30,7 +30,7 @@
         if (GameSave.hasItem('stool')){
             if (GameSave.hasItem('shrooms')){
                 const interactionBox = document.getElementById('trapdoor_interaction');
-                interactionBox.querySelector('.text p').innerText = "Vous utilisez le tabouret pour atteindre la trappe, elle s'ouvre.";
+                interactionBox.querySelector('.text p').innerText = "La trappe donne sur une nouvel pièce ";
                 callTypeWriter("trapdoor");
 
                 let options = document.getElementById('trapdoor_options');
@@ -38,13 +38,13 @@
                 return;
             }
             const interactionBox = document.getElementById('trapdoor_interaction');
-            interactionBox.querySelector('.text p').innerText = "Je devrais peut être récupérer tout ce que je trouve avant d'avancer...";
+            interactionBox.querySelector('.text p').innerText = "Ce serait imprudent de partir les mains vides...";
             callTypeWriter("trapdoor");
             return;
         }
         else{
             const interactionBox = document.getElementById('trapdoor_interaction');
-            interactionBox.querySelector('.text p').innerText = "La trappe est trop haute pour l'atteindre.";
+            interactionBox.querySelector('.text p').innerText = "La trappe est trop haute";
             callTypeWriter("trapdoor");
             return;
         }

@@ -7,7 +7,7 @@
         <button onclick="closeInteraction('torch_interaction');">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">Une lampe, je pourrais la récupérer mais elle serait éteinte...</p>
+        <p class="typewriter">Une lampe à huile, la mèche est presque consumée</p>
     </div>
 </div>
 
@@ -41,7 +41,7 @@
         const image = document.querySelector('#torch_interaction .interaction-image');
         image.src = "objects/torch/torch_lit.png";
         const interactionBox = document.getElementById('torch_interaction');
-        interactionBox.querySelector('.text p').innerText = "Vous allumez la lampe.";
+        interactionBox.querySelector('.text p').innerText = "Elle s’allume… mais pas pour longtemps";
         callTypeWriter("torch");
         document.getElementById('lightTorch').style.display = 'none';
         document.getElementById('pickTorch').style.display = 'block';
