@@ -5,7 +5,7 @@ let typeWriterTimeout;
 // Change the view based on input
 function changeView(direction) {
     $("#scene").empty(); // Clear current scene
-    
+
     const background = document.getElementById('game-container').style;
     // Change view based on direction
     if(direction === 'left' && view > 0) {
@@ -98,7 +98,7 @@ function changeScene(scene) {
 
 function newGame() {
     GameSave.reset();
-    changeScene('pages/scene0/mainScene0.html');
+    changeScene('pages/scene0/intro.html');
 }
 
 function continueGame() {

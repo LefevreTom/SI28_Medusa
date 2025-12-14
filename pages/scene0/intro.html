@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medusa | Floor 0</title>
+    <link rel="stylesheet" href="../../game-container.css" />
+    <link rel="stylesheet" href="../floors.css">
+    <script src="../../imports/jquery-3.7.1.min.js"></script>
+    <script src="../../scripts/main.js"></script>
+</head>
+<body>
+    <div id="transitionScreen"></div>
+    <!-- Wrapper for black letterbox bars -->
+    <div class="game-wrapper" id="game-wrapper">
+        <div class="game-container" id="game-container">
+            <div id="UI">
+                <div class="interaction" id="intro_interaction">
+                    <div class="text"> 
+                        <p class="typewriter">Une trappe, elle à l'air de ne pas avoir de serrure...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+.game-container {
+    background-color:black;
+    background-image: none;
+}
+.interaction .text .typewriter {
+    font-size: 200%;
+    color: white;
+    text-align: center;
+    margin: 0;
+    max-width: 80%;
+}
+.interaction, .interaction .text {
+    all: unset;
+    height:100%;
+    width:100%;
+}
+.interaction .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+
+<script>
+    window.addEventListener("load", () => {
+        // fade from black
+        document.getElementById('transitionScreen').style.opacity = 0;
+        // wait for animation to finish
+        setTimeout(() => {
+            document.getElementById('transitionScreen').style.zIndex = -10;            
+            callTypeWriter("intro");
+            setTimeout(() => {
+                window.location.href = "../../../pages/scene0/mainScene0.html";
+            }, 5000);
+        }, 2000);
+    });
+</script>
