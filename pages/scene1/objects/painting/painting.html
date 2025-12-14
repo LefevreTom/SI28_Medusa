@@ -6,7 +6,7 @@
         <button onclick="closeInteraction('painting_interaction');">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">Une peinture.</p>
+        <p class="typewriter">Mais que fait Oscar Abbé ici ?</p>
     </div>
 </div>
 
@@ -34,7 +34,7 @@
         const image = document.querySelector('#painting_interaction .interaction-image');
         image.src = "objects/painting/painting_revealed.png";
         const interactionBox = document.getElementById('painting_interaction');
-        interactionBox.querySelector('.text p').innerText = "Vous approchez la torche du tableau et découvrez un message caché.";
+        interactionBox.querySelector('.text p').innerText = "Attends… Oscar … Mafieux ? Sérieusement ?";
         callTypeWriter("painting");
         document.querySelector('#painting_options #painting-locked').style.display = 'none';
     }
