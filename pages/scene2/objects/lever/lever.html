@@ -1,86 +1,85 @@
-<div class="object" id="lever" onclick="revealInteraction('lever')"></div>
-<div class="interaction" id="lever_interaction">
-    <img src="objects/lever/lever.png" alt="lever" class="interaction-image">
-    <div class="options" id="lever_options">
-        <button id="batterylever" onclick="openlever()">Allumer</button>
-        <button id="onlever" onclick="turnOn()">Allumer</button>
-        <button id="offlever" onclick="turnOff()">Éteindre</button>
-        <button onclick="closeInteraction('lever_interaction');">Fermer</button>
+<div class="object" id="leverPanel" onclick="revealInteraction('leverPanel')"></div>
+
+<div class="interaction" id="leverPanel_interaction">
+    <!-- <img src="objects/lever/lever.png" alt="Lever Panel" class="interaction-image"> -->
+
+    <div class="lever-grid">
+        <div class="lever" data-index="0" onclick="toggleLever(this)"></div>
+        <div class="lever" data-index="1" onclick="toggleLever(this)"></div>
+        <div class="lever" data-index="2" onclick="toggleLever(this)"></div>
+        <div class="lever" data-index="3" onclick="toggleLever(this)"></div>
+        <div class="lever" data-index="4" onclick="toggleLever(this)"></div>
+        <div class="lever" data-index="5" onclick="toggleLever(this)"></div>
     </div>
-    <div class="text"> 
-        <p class="typewriter">Un vieux poste de lever.</p>
+
+    <div class="options" id="leverPanel_options">
+        <button onclick="confirmLeverCode()">Confirmer</button>
+        <button onclick="closeInteraction('leverPanel_interaction')">Fermer</button>
+    </div>
+
+    <div class="text">
+        <p class="typewriter">Six leviers sont devant vous.</p>
     </div>
 </div>
 
 <style>
-    #lever {
-        background: url(objects/lever/lever.png) center/contain no-repeat;
+#leverPanel {
+    background-image: url(objects/lever/lever.png);
 
-        /* Create a mask using the PNG's alpha */
-        -webkit-mask: url(objects/lever/lever.png) center/contain no-repeat;
-        mask: url(objects/lever/lever.png) center/contain no-repeat;
-        
-        width: 7%;
-        height: 12%;
-        top: 74%;
-        left: 67%;
-    }
-    #onlever, #offlever {
-         display: none;
-        display: none;
-    }
+    -webkit-mask: url(objects/lever/lever.png) center/contain no-repeat;
+    mask: url(objects/lever/lever.png) center/contain no-repeat;
+
+    width: 8%;
+    height: 16%;
+    top: 36%;
+    left: 23.4%;
+}
+
+/* Interaction levers */
+.lever-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(2, 110px);
+    gap: 14px;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.lever {
+    width: 70px;
+    height: 110px;
+    background-image: url(objects/leverPanel/leverDown.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.lever.on {
+    background-image: url(objects/leverPanel/leverUp.png);
+}
 </style>
 
 <script>
-    var hasBattery = false;
-    var leverOn = false;
+    // 0 = off, 1 = on
+    const leverPanelState = [0, 0, 0, 0, 0, 0];
 
-    function openlever(){
-        if (GameSave.hasItem('battery')){
-            const interactionBox = document.getElementById('lever_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous insérez la batterie dans le poste de lever.";
-            hasBattery = true;
-            GameSave.removeItem('battery');
-            document.getElementById('batterylever').style.display = 'none'; 
-            document.getElementById('onlever').style.display = 'block';
-            callTypeWriter("lever");
-            return;
-        }
-        else{
-            const interactionBox = document.getElementById('lever_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous essayez de l'allumer, mais il lui manque une source d'énergie.";
-            callTypeWriter("lever");
-            return;
-        }
+    function toggleLever(el) {
+        const index = Number(el.dataset.index);
+
+        leverPanelState[index] = leverPanelState[index] === 0 ? 1 : 0;
+        el.classList.toggle('on');
     }
-    function turnOn(){
-        if (hasBattery && !leverOn){
-            const interactionBox = document.getElementById('lever_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous allumez le poste de lever.";
-            leverOn = true;
-            
-            const onleverOption = document.querySelector('#lever_options #onlever');
-            onleverOption.style.display = 'none';
-            const offleverOption = document.querySelector('#lever_options #offlever');
-            offleverOption.style.display = 'block';
 
-            callTypeWriter("lever");
-            return;
-        }
-    }
-    function turnOff(){
-        if (hasBattery && leverOn){
-            const interactionBox = document.getElementById('lever_interaction');
-            interactionBox.querySelector('.text p').innerText = "Vous éteignez le poste de lever.";
-            leverOn = false;
-            
-            const onleverOption = document.querySelector('#lever_options #onlever');
-            onleverOption.style.display = 'block';
-            const offleverOption = document.querySelector('#lever_options #offlever');
-            offleverOption.style.display = 'none';
+    function confirmLeverCode() {
+        const enteredCode = leverPanelState.join('');
+        const correctCode = '101011'; // change as needed
 
-            callTypeWriter("lever");
-            return;
+        if (enteredCode === correctCode) {
+            closeInteraction('leverPanel_interaction');
+            console.log('Correct code!');
+        } else {
+            console.log('Wrong code');
         }
     }
 </script>
