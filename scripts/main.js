@@ -87,14 +87,19 @@ function updatePosition(background) {
 }
 
 function changeScene(scene) {
-    // fade to black
-    document.getElementById('transitionScreen').style.zIndex = 200;
-    document.getElementById('transitionScreen').style.opacity = 1;
-    // wait for the transition to finish
-    setTimeout(() => {
-        // change scene
+    const screen = document.getElementById('transitionScreen');
+
+    screen.style.zIndex = 200;
+    screen.style.opacity = 1;
+
+    const onTransitionEnd = (e) => {
+        if (e.propertyName !== 'opacity') return;
+
+        screen.removeEventListener('transitionend', onTransitionEnd);
         window.location.href = scene;
-    }, 2000);
+    };
+
+    screen.addEventListener('transitionend', onTransitionEnd);
 }
 
 function newGame() {
