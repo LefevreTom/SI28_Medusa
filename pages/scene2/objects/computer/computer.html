@@ -1,0 +1,34 @@
+<div class="object" id="computer" onclick="revealInteraction('computer')"></div>
+<div class="interaction" id="computer_interaction">
+    <img src="objects/computer/computer.png" alt="computer" class="interaction-image">
+    <div class="options" id="computer_options">
+        <button onclick="openComputer()">Allumer</button>
+        <button onclick="closeInteraction('computer_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Incroyable… un “ordinateur” comme dans les livres d'histoire.</p>
+    </div>
+</div>
+
+<style>
+    #computer {
+        background: url(objects/computer/computer.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/computer/computer.png) center/contain no-repeat;
+        mask: url(objects/computer/computer.png) center/contain no-repeat;
+        
+        width: 8%;
+        height: 14%;
+        top: 45%;
+        left: 67%;
+    }
+</style>
+
+<script>
+    function openComputer(){
+        const interactionBox = document.getElementById('computer_interaction');
+        interactionBox.querySelector('.text p').innerText = "L'ordinateur s'allume et affiche un message : 'Bienvenue dans le système.'";
+        callTypeWriter("computer");
+    }
+</script>

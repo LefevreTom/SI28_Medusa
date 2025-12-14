@@ -1,0 +1,36 @@
+<div class="object" id="batteries" onclick="revealInteraction('batteries')"></div>
+<div class="interaction" id="batteries_interaction">
+    <img src="objects/batteries/batteries.png" alt="batteries" class="interaction-image">
+    <div class="options" id="batteries_options">
+        <button onclick="pickBatteries()">Récupérer</button>
+        <button onclick="closeInteraction('batteries_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Des piles.</p>
+    </div>
+</div>
+
+<style>
+    #batteries {
+        background: url(objects/batteries/batteries.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/batteries/batteries.png) center/contain no-repeat;
+        mask: url(objects/batteries/batteries.png) center/contain no-repeat;
+        
+        width: 7%;
+        height: 13%;
+        top: 59%;
+        left: 56%;
+    }
+</style>
+
+<script>
+    // function called when picking up the batteries
+    function pickBatteries(){
+        GameSave.addItem('batteries');
+        newView = removeItemAll(GameSave.getView()["centerView"], 'batteries');
+        GameSave.setView({centerView: newView});
+        updateObjects();
+    }
+</script>

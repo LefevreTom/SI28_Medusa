@@ -1,0 +1,86 @@
+<div class="object" id="lever" onclick="revealInteraction('lever')"></div>
+<div class="interaction" id="lever_interaction">
+    <img src="objects/lever/lever.png" alt="lever" class="interaction-image">
+    <div class="options" id="lever_options">
+        <button id="batterylever" onclick="openlever()">Allumer</button>
+        <button id="onlever" onclick="turnOn()">Allumer</button>
+        <button id="offlever" onclick="turnOff()">Éteindre</button>
+        <button onclick="closeInteraction('lever_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Un vieux poste de lever.</p>
+    </div>
+</div>
+
+<style>
+    #lever {
+        background: url(objects/lever/lever.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/lever/lever.png) center/contain no-repeat;
+        mask: url(objects/lever/lever.png) center/contain no-repeat;
+        
+        width: 7%;
+        height: 12%;
+        top: 74%;
+        left: 67%;
+    }
+    #onlever, #offlever {
+         display: none;
+        display: none;
+    }
+</style>
+
+<script>
+    var hasBattery = false;
+    var leverOn = false;
+
+    function openlever(){
+        if (GameSave.hasItem('battery')){
+            const interactionBox = document.getElementById('lever_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous insérez la batterie dans le poste de lever.";
+            hasBattery = true;
+            GameSave.removeItem('battery');
+            document.getElementById('batterylever').style.display = 'none'; 
+            document.getElementById('onlever').style.display = 'block';
+            callTypeWriter("lever");
+            return;
+        }
+        else{
+            const interactionBox = document.getElementById('lever_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous essayez de l'allumer, mais il lui manque une source d'énergie.";
+            callTypeWriter("lever");
+            return;
+        }
+    }
+    function turnOn(){
+        if (hasBattery && !leverOn){
+            const interactionBox = document.getElementById('lever_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous allumez le poste de lever.";
+            leverOn = true;
+            
+            const onleverOption = document.querySelector('#lever_options #onlever');
+            onleverOption.style.display = 'none';
+            const offleverOption = document.querySelector('#lever_options #offlever');
+            offleverOption.style.display = 'block';
+
+            callTypeWriter("lever");
+            return;
+        }
+    }
+    function turnOff(){
+        if (hasBattery && leverOn){
+            const interactionBox = document.getElementById('lever_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous éteignez le poste de lever.";
+            leverOn = false;
+            
+            const onleverOption = document.querySelector('#lever_options #onlever');
+            onleverOption.style.display = 'block';
+            const offleverOption = document.querySelector('#lever_options #offlever');
+            offleverOption.style.display = 'none';
+
+            callTypeWriter("lever");
+            return;
+        }
+    }
+</script>

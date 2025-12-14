@@ -1,0 +1,40 @@
+<div class="object" id="letter" onclick="revealInteraction('letter')"></div>
+<div class="interaction" id="letter_interaction">
+    <img src="objects/letter/letter.png" alt="letter" class="interaction-image">
+    <div class="options" id="letter_options">
+        <button id="pickletter" onclick="readLetter()">Lire</button>
+        <button onclick="closeInteraction('letter_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Quelques mots écrits à l'encre noire.</p>
+    </div>
+</div>
+
+<style>
+    #letter {
+        background: url(objects/letter/letter.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/letter/letter.png) center/contain no-repeat;
+        mask: url(objects/letter/letter.png) center/contain no-repeat;
+        
+        width: 4%;
+        height: 16%;
+        top: 43.7%;
+        left: 70%;
+
+        display: none;
+    }
+</style>
+
+<script>
+    function readLetter(){
+        const interactionBox = document.getElementById('letter_interaction');
+        interactionBox.querySelector('.text p').innerText = "Notre amour est aussi fluide qu'un engrenage ";
+        callTypeWriter("letter");
+        const optionsBox = document.getElementById('letter_options');
+        optionsBox.innerHTML = `
+            <button onclick="closeInteraction('letter_interaction');">Fermer</button>
+        `;
+    }
+</script>

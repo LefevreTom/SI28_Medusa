@@ -4,9 +4,9 @@ let view = 1; /* 0 = left, 1 = center, 2 = right */
 // Scene name should be the same as the folder name 
 let sceneName = "scene2";
 
-let scene2leftView = Array.from(['battery', 'radio']);
-let scene2centerView = Array.from(['painting', 'torch']);
-let scene2rightView = Array.from(['matches', 'jerrycan']);
+let scene2leftView = Array.from(['chest', 'letter', 'jocko']);
+let scene2centerView = Array.from(['batteries']);
+let scene2rightView = Array.from(['jetpack', 'robot', 'computer']);
 
 // Save the game before the page is unloaded
 window.addEventListener("beforeunload", GameSave.save);
@@ -43,7 +43,7 @@ let init = () => {
         rightView: scene2rightView
     };
     // Recreate game views
-    if (GameSave.getProgress().floor === 0) {
+    if (GameSave.getProgress().floor === 1) {
         let prog = GameSave.getProgress()
         let inv = GameSave.getInventory()
         let shr = GameSave.getShrooms()

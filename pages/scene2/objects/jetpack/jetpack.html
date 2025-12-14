@@ -1,0 +1,36 @@
+<div class="object" id="jetpack" onclick="revealInteraction('jetpack');hasTorch();"></div>
+<div class="interaction" id="jetpack_interaction">
+    <img src="objects/jetpack/jetpack.png" alt="jetpack" class="interaction-image">
+    <div class="options" id="jetpack_options">
+        <button onclick="pickJetpack()">Récupérer</button>
+        <button onclick="closeInteraction('jetpack_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Un jetpack, il semble encore fonctionnel.</p>
+    </div>
+</div>
+
+<style>
+    #jetpack {
+        background: url(objects/jetpack/jetpack.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/jetpack/jetpack.png) center/contain no-repeat;
+        mask: url(objects/jetpack/jetpack.png) center/contain no-repeat;
+        
+        width: 6%;
+        height: 16%;
+        top: 70%;
+        left: 83%;
+    }
+</style>
+    
+<script>
+    // function called when "reading" the jetpack
+    function pickJetpack(){
+        GameSave.addItem('jetpack');
+        newView = removeItemAll(GameSave.getView()["rightView"], 'jetpack');
+        GameSave.setView({rightView: newView});
+        updateObjects();
+    }
+</script>

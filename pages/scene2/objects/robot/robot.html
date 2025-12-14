@@ -1,0 +1,86 @@
+<div class="object" id="robot" onclick="revealInteraction('robot')"></div>
+<div class="interaction" id="robot_interaction">
+    <img src="objects/robot/robot.png" alt="robot" class="interaction-image">
+    <div class="options" id="robot_options">
+        <button id="batteryrobot" onclick="openrobot()">Allumer</button>
+        <button id="onrobot" onclick="turnOn()">Allumer</button>
+        <button id="offrobot" onclick="turnOff()">Éteindre</button>
+        <button onclick="closeInteraction('robot_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Mon vieux robot “Nemo 3000” c'était mon jouet préféré.</p>
+    </div>
+</div>
+
+<style>
+    #robot {
+        background: url(objects/robot/robot.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/robot/robot.png) center/contain no-repeat;
+        mask: url(objects/robot/robot.png) center/contain no-repeat;
+        
+        width: 5%;
+        height: 10%;
+        top: 45.9%;
+        left: 48%;
+    }
+    #onrobot, #offrobot {
+         display: none;
+        display: none;
+    }
+</style>
+
+<script>
+    var hasBattery = false;
+    var robotOn = false;
+
+    function openrobot(){
+        if (GameSave.hasItem('batteries')){
+            const interactionBox = document.getElementById('robot_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous insérez les piles : Il marche ! mais son bruit est franchement inquiétant";
+            hasBattery = true;
+            GameSave.removeItem('batteries');
+            document.getElementById('batteryrobot').style.display = 'none'; 
+            document.getElementById('onrobot').style.display = 'block';
+            callTypeWriter("robot");
+            return;
+        }
+        else{
+            const interactionBox = document.getElementById('robot_interaction');
+            interactionBox.querySelector('.text p').innerText = "Il ne répond pas, les piles sont mortes.";
+            callTypeWriter("robot");
+            return;
+        }
+    }
+    function turnOn(){
+        if (hasBattery && !robotOn){
+            const interactionBox = document.getElementById('robot_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous allumez le petit robot.";
+            robotOn = true;
+            
+            const onrobotOption = document.querySelector('#robot_options #onrobot');
+            onrobotOption.style.display = 'none';
+            const offrobotOption = document.querySelector('#robot_options #offrobot');
+            offrobotOption.style.display = 'block';
+
+            callTypeWriter("robot");
+            return;
+        }
+    }
+    function turnOff(){
+        if (hasBattery && robotOn){
+            const interactionBox = document.getElementById('robot_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous éteignez le petit robot.";
+            robotOn = false;
+            
+            const onrobotOption = document.querySelector('#robot_options #onrobot');
+            onrobotOption.style.display = 'block';
+            const offrobotOption = document.querySelector('#robot_options #offrobot');
+            offrobotOption.style.display = 'none';
+
+            callTypeWriter("robot");
+            return;
+        }
+    }
+</script>
