@@ -80,6 +80,7 @@
             const interactionBox = document.getElementById('lever_interaction');
             interactionBox.querySelector('.text p').innerText = "Click, click, click... Le mécanisme s'enclenche.";
             callTypeWriter("lever");
+            GameSave.addItem('key2');
             const optionsBox = document.getElementById('lever_options');
             optionsBox.innerHTML = `
                 <button onclick="closeInteraction('lever_interaction');">Fermer</button>

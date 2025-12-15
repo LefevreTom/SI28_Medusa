@@ -1,0 +1,52 @@
+<div class="object" id="door2" onclick="revealInteraction('door2'), testKey2();"></div>
+<div class="interaction" id="door2_interaction">
+    <img src="objects/door2/door2.png" alt="door2" class="interaction-image">
+    <div class="options" id="door2_options">
+        <button id="door2Open" onclick="openDoor2()">Sortir</button>
+        <button onclick="closeInteraction('door2_interaction');">Fermer</button>
+    </div>
+    <div class="text"> 
+        <p class="typewriter">Une porte fermée.</p>
+    </div>
+</div>
+
+<style>
+    #door2 {
+        background: url(objects/door2/door2.png) center/contain no-repeat;
+
+        /* Create a mask using the PNG's alpha */
+        -webkit-mask: url(objects/door2/door2.png) center/contain no-repeat;
+        mask: url(objects/door2/door2.png) center/contain no-repeat;
+        
+        width: 24%;
+        height: 96%;
+        top: 5%;
+        left: -1%;
+    }
+    #door2Open {
+        display: none;
+    }
+</style>
+
+<script>
+    function testKey2(){
+        if (GameSave.hasItem('key2')){
+            document.getElementById('door2Open').style.display = 'block'; 
+            const interactionBox = document.getElementById('door2_interaction');
+            interactionBox.querySelector('.text p').innerText = "Il semblerait qu'un mécanisme ait débloqué la porte.";
+            callTypeWriter("door2");
+        }
+        else{
+            document.getElementById('door2Open').style.display = 'none'; 
+        }
+    }
+
+    function openDoor2(){
+        Leave();  
+        return;
+    }
+
+    function Leave(){
+        window.location.href = "../../../pages/scene3/mainScene3.html";
+    }
+</script>

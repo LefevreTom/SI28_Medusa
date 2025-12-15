@@ -4,7 +4,7 @@ let view = 1; /* 0 = left, 1 = center, 2 = right */
 // Scene name should be the same as the folder name 
 let sceneName = "scene2";
 
-let scene2leftView = Array.from(['chest', 'letter', 'jocko', 'lever']);
+let scene2leftView = Array.from(['chest', 'letter', 'jocko', 'lever', 'door2']);
 let scene2centerView = Array.from(['batteries']);
 let scene2rightView = Array.from(['jetpack', 'robot', 'computer']);
 

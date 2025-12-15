@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../assets/Medusa-ico.jpg">
+    <title>Medusa | Floor 3</title>
+    <link rel="stylesheet" href="../../game-container.css" />
+    <link rel="stylesheet" href="../floors.css">
+    <script src="../../imports/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<div id="transitionScreen"></div>
+<!-- Wrapper for black letterbox bars -->
+<div class="game-wrapper" id="game-wrapper">
+    <div class="game-container" id="game-container">
+        <div id="UI">
+            <div id="timer" class="timer">05:00</div>
+            <!-- Load the sound to play when timer hit 0 -->
+            <audio id="timerEndSound" src="sounds/timer_end.mp3" preload="auto"></audio>
+            <!-- Interraction to show when timer hit 0 -->
+            <div class="interaction" id="timerEnd_interaction" style="display:none;">
+                <div class="options">
+                    <button onclick="confirmTimerEnd()">Abandonner</button>
+                </div>
+                <div class="text">
+                    <p class="typewriter">Qu'est ce qu'il se passe ? Est ce que j'ai pris trop de temps ?</p>
+                </div>
+            </div>
+            <div id="scene"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<style>
+.game-container {
+    background-image: url(../../assets/Floor2.jpg);
+}
+</style>
+
+<script src="../../scripts/main.js"></script>
+<script src="../../scripts/gamesave.js"></script>
+<script src="../../scripts/timer.js"></script>
+<script src="../../scripts/scene3.js"></script>
+<script>
+    window.addEventListener("load", () => {
+        initTimer();
+        pauseTimer();
+    });
+</script>
