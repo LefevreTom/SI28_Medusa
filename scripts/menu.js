@@ -16,6 +16,14 @@ let init = () => {
     }
 }
 
+function credit() {
+    window.location.href = "../../credits.html";
+}
+function home() {
+    window.location.href = "../../index.html";
+}
+
 // Launch game
 // window.onload = init;
 window.addEventListener('pageshow', init);
+
