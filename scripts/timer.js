@@ -61,6 +61,9 @@ function onTimerEnd() {
     // Reset save file completely
     GameSave.reset();
 
+    // Close any interaction box
+    closeAllInteractions();
+
     // Show the death interaction
     revealInteraction('timerEnd');
 }

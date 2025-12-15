@@ -1,8 +1,6 @@
-<div class="object" id="leverPanel" onclick="revealInteraction('leverPanel')"></div>
+<div class="object" id="lever" onclick="revealInteraction('lever')"></div>
 
-<div class="interaction" id="leverPanel_interaction">
-    <!-- <img src="objects/lever/lever.png" alt="Lever Panel" class="interaction-image"> -->
-
+<div class="interaction" id="lever_interaction">
     <div class="lever-grid">
         <div class="lever" data-index="0" onclick="toggleLever(this)"></div>
         <div class="lever" data-index="1" onclick="toggleLever(this)"></div>
@@ -12,9 +10,9 @@
         <div class="lever" data-index="5" onclick="toggleLever(this)"></div>
     </div>
 
-    <div class="options" id="leverPanel_options">
+    <div class="options" id="lever_options">
         <button onclick="confirmLeverCode()">Confirmer</button>
-        <button onclick="closeInteraction('leverPanel_interaction')">Fermer</button>
+        <button onclick="closeInteraction('lever_interaction')">Fermer</button>
     </div>
 
     <div class="text">
@@ -23,7 +21,7 @@
 </div>
 
 <style>
-#leverPanel {
+#lever {
     background-image: url(objects/lever/lever.png);
 
     -webkit-mask: url(objects/lever/lever.png) center/contain no-repeat;
@@ -37,18 +35,21 @@
 
 /* Interaction levers */
 .lever-grid {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: grid;
-    grid-template-columns: repeat(3, 70px);
-    grid-template-rows: repeat(2, 110px);
-    gap: 14px;
+    grid-template-columns: repeat(3, 30%);
+    grid-template-rows: repeat(2, 50%);
+    gap: 10%;
     justify-content: center;
-    margin: 15px 0;
 }
 
 .lever {
-    width: 70px;
-    height: 110px;
-    background-image: url(objects/leverPanel/leverDown.png);
+    width: 130px;
+    height: 140px;
+    background-image: url(objects/lever/leverDown.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -56,7 +57,7 @@
 }
 
 .lever.on {
-    background-image: url(objects/leverPanel/leverUp.png);
+    background-image: url(objects/lever/leverUp.png);
 }
 </style>
 
@@ -76,10 +77,17 @@
         const correctCode = '101011'; // change as needed
 
         if (enteredCode === correctCode) {
-            closeInteraction('leverPanel_interaction');
-            console.log('Correct code!');
+            const interactionBox = document.getElementById('lever_interaction');
+            interactionBox.querySelector('.text p').innerText = "Click, click, click... Le mécanisme s'enclenche.";
+            callTypeWriter("lever");
+            const optionsBox = document.getElementById('lever_options');
+            optionsBox.innerHTML = `
+                <button onclick="closeInteraction('lever_interaction');">Fermer</button>
+            `;
         } else {
-            console.log('Wrong code');
+            const interactionBox = document.getElementById('lever_interaction');
+            interactionBox.querySelector('.text p').innerText = "Rien ne se passe...";
+            callTypeWriter("lever");
         }
     }
 </script>

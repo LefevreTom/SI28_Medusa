@@ -181,6 +181,13 @@ function updateViews() {
     });
 }
 
+function closeAllInteractions() {
+    const interactionBoxes = document.querySelectorAll('.interaction');
+    interactionBoxes.forEach(box => {
+        box.style.display = 'none';
+    });
+}
+
 function scaleGameContainer() {
     const container = document.getElementById('game-container');
     const wrapper = document.getElementById('game-wrapper');
