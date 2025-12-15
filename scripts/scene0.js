@@ -30,7 +30,7 @@ let init = () => {
     if (GameSave.hasItem('shrooms')) {
         document.getElementById("ui-shroom").style.display = "block";
     }
-    
+
     // Remove objects that are in the inventory from the view
     let inv = GameSave.getInventory();
     inv.forEach(item => {
@@ -46,6 +46,10 @@ function shroomEffect() {
     let container = document.getElementById("game-container");
     if (currentShrooms > 0 && canShroom) {
         GameSave.setShrooms(currentShrooms - 1);
+        // AUDIO
+        AudioManager.playSfx('../../assets/audio/sfx/Fiole.mp3');
+        AudioManager.crossFade('../../assets/audio/music/Instrudrogue.mp3', 500, true);
+
         if (currentShrooms - 1 === 0) { document.getElementById("ui-shroom").style.filter = "grayscale(1)"; }
         document.getElementById("shroom-count").textContent = GameSave.getShrooms();
         // Apply effect 
@@ -57,6 +61,8 @@ function shroomEffect() {
             container.classList.remove("shroom-effect");
             container.classList.add("shroom-effect-reverse");
             canShroom = true;
+                
+            AudioManager.crossFade('../../assets/audio/music/Musique5mins.mp3', 1000, true);
         }, 15000);
     }
 }

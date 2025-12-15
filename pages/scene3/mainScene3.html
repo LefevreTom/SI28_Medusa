@@ -45,7 +45,7 @@
 
 <style>
 .game-container {
-    background-image: url(../../assets/Floor2.jpg);
+    background-image: url(../../assets/Floor3.jpg);
 }
 #jetpackOption{
     display: none;
@@ -56,10 +56,12 @@
 <script src="../../scripts/gamesave.js"></script>
 <script src="../../scripts/timer.js"></script>
 <script src="../../scripts/scene3.js"></script>
+<script src="../../scripts/audio.js"></script>
 <script>
     window.addEventListener("load", () => {
         initTimer();
         pauseTimer();
+        AudioManager.crossFade('../../assets/audio/music/SalleExt.mp3', 50, true);
         hasJetpack();
         revealInteraction('gameEnd');
     });

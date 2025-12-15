@@ -20,8 +20,6 @@
                 <span id="shroom-count">5</span>
             </div>
             <div id="timer" class="timer">05:00</div>
-            <!-- Load the sound to play when timer hit 0 -->
-            <audio id="timerEndSound" src="sounds/timer_end.mp3" preload="auto"></audio>
             <!-- Interraction to show when timer hit 0 -->
             <div class="interaction" id="timerEnd_interaction" style="display:none;">
                 <div class="options">
@@ -53,6 +51,12 @@
 <script src="../../scripts/gamesave.js"></script>
 <script src="../../scripts/timer.js"></script>
 <script src="../../scripts/scene0.js"></script>
+<script src="../../scripts/audio.js"></script>
 <script>
     initTimer();
+
+    // === MUSIC SETUP ===
+    // Load background music for this scene
+    // Music will auto-resume if coming from another scene
+    AudioManager.loadMusic('../../assets/audio/music/Musique5mins.mp3', true);
 </script>

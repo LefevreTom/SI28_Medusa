@@ -50,13 +50,9 @@ function updateTimerDisplay(seconds) {
 // Triggered when time reaches 0
 function onTimerEnd() {
     const uiEl = document.getElementById("UI");
-    const sound = document.getElementById("timerEndSound");
 
     // Red flash effect
     uiEl.classList.add("timer-flash");
-
-    // Play sound
-    sound.play();
 
     // Reset save file completely
     GameSave.reset();
