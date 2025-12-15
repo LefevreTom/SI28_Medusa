@@ -156,29 +156,17 @@ function callTypeWriter(objectName) {
     }());
 }
 
-function removeItemAll(arr, value) {
+function removeItemAll(arr, value, removeAll = true) {
   var i = 0;
   while (i < arr.length) {
     if (arr[i] === value) {
       arr.splice(i, 1);
+      if (!removeAll) break; // stop after first removal
     } else {
       ++i;
     }
   }
   return arr;
-}
-
-// Remove collected items from views
-function updateViews() {
-    const inventory = GameSave.getInventory();
-    const allViews = [leftView, centerView, rightView];
-
-    allViews.forEach(view => {
-        // remove all items that are already collected
-        inventory.forEach(item => {
-            removeItemAll(view, item);
-        });
-    });
 }
 
 function closeAllInteractions() {

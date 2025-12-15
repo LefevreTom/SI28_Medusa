@@ -21,12 +21,11 @@ let init = () => {
     setTimeout(() => {
         document.getElementById('transitionScreen').style.zIndex = -10;
     }, 2000);
-    
-    // load objects for center view
-    scene2centerView.forEach(load_object);
 
     // Set initial shroom count in UI
-    document.getElementById("shroom-count").textContent = GameSave.getShrooms();
+    let currentShrooms = GameSave.getShrooms();
+    document.getElementById("shroom-count").textContent = currentShrooms;
+    if (currentShrooms === 0) { document.getElementById("ui-shroom").style.filter = "grayscale(1)"; }
 
     // Event listener for key inputs
     document.addEventListener('keydown', function(event) {
@@ -37,6 +36,17 @@ let init = () => {
         }
     });
     
+    // Remove objects that are in the inventory from the view
+    let inv = GameSave.getInventory();
+    inv.forEach(item => {
+        scene2leftView = removeItemAll(scene2leftView, item, true); // true at the end so only the first occurrence is removed
+        scene2centerView = removeItemAll(scene2centerView, item, true); // true at the end so only the first occurrence is removed
+        scene2rightView = removeItemAll(scene2rightView, item, true); // true at the end so only the first occurrence is removed
+    });
+    
+    // load objects for center view
+    scene2centerView.forEach(load_object);
+
     var scene2Views = {
         leftView: scene2leftView, 
         centerView: scene2centerView, 

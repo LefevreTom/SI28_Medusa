@@ -32,5 +32,34 @@ let init = () => {
         GameSave.setProgress({floor: 3});
     }
 }
+
+function useJetpack() {
+    if (GameSave.hasItem('jerrycan')) {
+        const interactionBox = document.getElementById('gameEnd_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous ajoutez de l'essence au jetpack, le mettez en marche, et vous vous envolez loin du dirigeable. Vous êtes sauvé ! il ne reste plus qu'à faire tomber Medusa... Victoire !";
+        callTypeWriter("gameEnd");
+        interactionBox.querySelector('.options').innerHTML = `<button onclick="rollCredits()">Victoire</button>`
+        return;
+    } else {
+        const interactionBox = document.getElementById('gameEnd_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous sautez hors du dirigeable en essayant d'activer le jetpack, il n'avait malheureusement plus d'essence...";
+        callTypeWriter("gameEnd");
+        interactionBox.querySelector('.options').innerHTML = `<button onclick="confirmTimerEnd()">Recommencer</button>`
+        return;
+    }
+}
+
+function jump() {
+    const interactionBox = document.getElementById('gameEnd_interaction');
+    interactionBox.querySelector('.text p').innerText = "Vous sautez hors du dirigeable et vous écrasez lamentablement au sol. Tu es mort. Spoiler : tu n'étais pas un oiseau.";
+    callTypeWriter("gameEnd");
+    interactionBox.querySelector('.options').innerHTML = `<button onclick="confirmTimerEnd()">Recommencer</button>`
+    return;
+}
+
+function rollCredits() {
+
+}
+
 // Launch game
 window.onload = init;

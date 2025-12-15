@@ -27,6 +27,15 @@ let init = () => {
         document.getElementById('transitionScreen').style.zIndex = -10;
     }, 2000);
     
+    if (GameSave.hasItem('shrooms')) {
+        document.getElementById("ui-shroom").style.display = "block";
+    }
+    
+    // Remove objects that are in the inventory from the view
+    let inv = GameSave.getInventory();
+    inv.forEach(item => {
+        scene0centerView = removeItemAll(scene0centerView, item, true); // true at the end so only the first occurrence is removed
+    });
     // load objects for center view
     scene0centerView.forEach(load_object);
 }

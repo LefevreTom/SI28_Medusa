@@ -21,10 +21,19 @@
             <!-- Interraction to show when timer hit 0 -->
             <div class="interaction" id="timerEnd_interaction" style="display:none;">
                 <div class="options">
-                    <button onclick="confirmTimerEnd()">Abandonner</button>
+                    <button onclick="confirmTimerEnd()">Recommencer</button>
                 </div>
                 <div class="text">
                     <p class="typewriter">Qu'est ce qu'il se passe ? Est ce que j'ai pris trop de temps ?</p>
+                </div>
+            </div>
+            <div class="interaction" id="gameEnd_interaction">
+                <div class="options">
+                    <button onclick="useJetpack()" id="jetpackOption">Utiliser le jetpack</button>
+                    <button onclick="jump()">Sauter</button>
+                </div>
+                <div class="text">
+                    <p class="typewriter">J'étais sur un dirigeable tout ce temps !? Je dois me dépêcher, il est en train de se crasher.</p>
                 </div>
             </div>
             <div id="scene"></div>
@@ -38,6 +47,9 @@
 .game-container {
     background-image: url(../../assets/Floor2.jpg);
 }
+#jetpackOption{
+    display: none;
+}
 </style>
 
 <script src="../../scripts/main.js"></script>
@@ -48,5 +60,13 @@
     window.addEventListener("load", () => {
         initTimer();
         pauseTimer();
+        hasJetpack();
+        revealInteraction('gameEnd');
     });
+
+    function hasJetpack(){
+        if (GameSave.hasItem('jetpack')) {
+            document.getElementById('jetpackOption').style.display = 'block';
+        }
+    }
 </script>
