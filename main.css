@@ -56,7 +56,7 @@ html, body {
   pointer-events: none;
 }
 
-h1{
+.menu-card h1{
   position: relative;
   top: 5%;
   z-index : 2;
@@ -68,7 +68,7 @@ h1{
   color: #fff;
 }
 
-h1::before {
+.menu-card h1::before {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
@@ -125,3 +125,132 @@ nav ul li button {
 nav ul li button:hover {
   background: linear-gradient(180deg, #b8742a 0%, #8e4d00 100%);
 }
+
+/* ------------------ crédits ------------------ */
+
+.credits-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            color: white;
+            background-color: #000;
+        }
+
+        .credits-scroll {
+            position: absolute;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            animation: scroll-up 60s linear forwards;
+            top: 0;
+        }
+
+        @keyframes scroll-up {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-100%);
+            }
+        }
+
+        .credits-title {
+            font-size: 4em;
+            font-weight: normal;
+            margin-bottom: 1em;
+            margin-top: 1em;
+            letter-spacing: 0.2em;
+        }
+
+        .section {
+            margin: 1.5em 0;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #fff;
+            margin-bottom: 0.5em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            font-size: 1.3em;
+            color: #fff;
+            margin: 1.5em 0 0.5em 0;
+        }
+
+        .credit-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 1.5em 0;
+            gap: 2em;
+            line-height: 1.8;
+        }
+
+        .credit-label {
+            text-align: right;
+            flex: 0 0 40%;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+
+        .credit-names {
+            text-align: left;
+            flex: 0 0 55%;
+            font-size: 1.2em;
+        }
+
+        .credit-names div {
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .credit-line {
+            font-size: 1.2em;
+            margin: 0.5em 0;
+            line-height: 1.8;
+        }
+
+        .names {
+            color: #fff;
+            font-weight: normal;
+        }
+
+        .spacer {
+            height: 3em;
+        }
+
+        .final-message {
+            font-size: 1.5em;
+            margin-top: 4em;
+            color: #fff;
+        }
+
+        /* Bouton de contrôle */
+        .controls {
+            position: fixed;
+            top: 1.5%;
+            left: 1.5%;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 0;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-family: 'Poiret One', cursive;
+            transition: opacity 0.3s;
+        }
+
+        .control-btn:hover {
+            opacity: 0.7;
+        }
