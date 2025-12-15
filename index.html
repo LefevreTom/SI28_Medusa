@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../../assets/Medusa-ico.jpg">
   <title>Medusa</title>
   <link rel="stylesheet" href="game-container.css" />
   <link rel="stylesheet" href="main.css" />
-  <script src="scripts/gamesave.js"></script>
-  <script src="scripts/menu.js"></script>
-  <script src="scripts/main.js"></script>
 </head>
 <body>
   <div id="transitionScreen"></div>
   <!-- Wrapper for black letterbox bars -->
-  <div class="game-wrapper">
-    <div class="game-container">
+  <div class="game-wrapper" id="game-wrapper">
+    <div class="game-container" id="game-container">
       <div id="UI">
         <div class="menu-card">
           <!-- <img src="./assets/card.svg" alt="Card Frame" class="card-svg" /> -->
@@ -32,3 +30,6 @@
   </div>
 </body>
 </html>
+<script src="scripts/gamesave.js"></script>
+<script src="scripts/menu.js"></script>
+<script src="scripts/main.js"></script>
