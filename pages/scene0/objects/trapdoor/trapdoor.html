@@ -29,6 +29,7 @@
     function opentrapdoor(){
         if (GameSave.hasItem('stool')){
             if (GameSave.hasItem('shrooms')){
+                AudioManager.playSfx('../../assets/audio/sfx/Salle0.mp3');
                 const interactionBox = document.getElementById('trapdoor_interaction');
                 interactionBox.querySelector('.text p').innerText = "La trappe donne sur une nouvel pièce ";
                 callTypeWriter("trapdoor");

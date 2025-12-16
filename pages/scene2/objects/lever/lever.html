@@ -66,6 +66,7 @@
     const leverPanelState = [0, 0, 0, 0, 0, 0];
 
     function toggleLever(el) {
+        AudioManager.playSfx('../../assets/audio/sfx/Levier.mp3');
         const index = Number(el.dataset.index);
 
         leverPanelState[index] = leverPanelState[index] === 0 ? 1 : 0;

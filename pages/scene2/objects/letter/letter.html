@@ -32,6 +32,7 @@
         const interactionBox = document.getElementById('letter_interaction');
         interactionBox.querySelector('.text p').innerText = "« Livraison confirmée pour jeudi. Lucia et Marco s'occupent du transfert. Le Docteur Fontaine prépare la nouvelle formule. Lady I. sera satisfaite. - R. »";
         callTypeWriter("letter");
+        AudioManager.playSfx('../../assets/audio/sfx/OuvertureLettre.mp3');
         const optionsBox = document.getElementById('letter_options');
         optionsBox.innerHTML = `
             <button onclick="closeInteraction('letter_interaction');">Fermer</button>

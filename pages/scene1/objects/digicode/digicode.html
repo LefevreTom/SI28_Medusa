@@ -32,6 +32,7 @@
     function choice1(number) {
         const interactionBox = document.getElementById('digicode_interaction');
         let textElement = interactionBox.querySelector('.text p');
+        AudioManager.playSfx('../../assets/audio/sfx/BipCode.mp3');
         if (!interactionBox.dataset.code) {
             interactionBox.dataset.code = '';
         }
@@ -40,6 +41,7 @@
         if (interactionBox.dataset.code.length === 3) {
             if (interactionBox.dataset.code === '672') {
                 opendigicode();
+                AudioManager.playSfx('../../assets/audio/sfx/PorteNonExterieur.mp3');
             } else {
                 textElement.innerText = "Erreur. Bravo, génie.";
                 callTypeWriter("digicode");

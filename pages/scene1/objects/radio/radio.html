@@ -44,6 +44,7 @@
             document.getElementById('batteryRadio').style.display = 'none'; 
             document.getElementById('onRadio').style.display = 'block';
             callTypeWriter("radio");
+            AudioManager.playSfx('../../assets/audio/sfx/BrancheLaRadio.mp3');
             return;
         }
         else{
@@ -57,13 +58,14 @@
         if (hasBattery && !radioOn){
             const interactionBox = document.getElementById('radio_interaction');
             interactionBox.querySelector('.text p').innerText = "Des grésillements… puis une musique se lance";
+            AudioManager.playSfx('../../assets/audio/music/3 pistes-Radio/InfoXylophe.mp3');
             radioOn = true;
-            
             const onRadioOption = document.querySelector('#radio_options #onRadio');
             onRadioOption.style.display = 'none';
+            AudioManager.playSfx('../../assets/audio/sfx/ChangementDeChaineRadio.mp3');
             const offRadioOption = document.querySelector('#radio_options #offRadio');
             offRadioOption.style.display = 'block';
-
+            AudioManager.playSfx('../../assets/audio/sfx/ChangementDeChaineRadio.mp3');
             callTypeWriter("radio");
             return;
         }
@@ -73,7 +75,8 @@
             const interactionBox = document.getElementById('radio_interaction');
             interactionBox.querySelector('.text p').innerText = "Le poste radio s’éteint dans un claquement sec";
             radioOn = false;
-            
+            AudioManager.playSfx('../../assets/audio/sfx/ChangementDeChaineRadio.mp3');
+
             const onRadioOption = document.querySelector('#radio_options #onRadio');
             onRadioOption.style.display = 'block';
             const offRadioOption = document.querySelector('#radio_options #offRadio');
