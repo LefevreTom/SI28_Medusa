@@ -63,6 +63,7 @@
     }
     function turnOn(){
         if (hasBattery && !robotOn){
+            AudioManager.playSfx('../../assets/audio/sfx/Robot_SOS.mp3');
             const interactionBox = document.getElementById('robot_interaction');
             interactionBox.querySelector('.text p').innerText = "Vous allumez le petit robot.";
             robotOn = true;

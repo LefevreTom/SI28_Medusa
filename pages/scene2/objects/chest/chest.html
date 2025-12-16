@@ -31,6 +31,7 @@
             const interactionBox = document.getElementById('chest_interaction');
             interactionBox.querySelector('.text p').innerText = "Une lettre repose à l'intérieur";
             callTypeWriter("chest");
+            AudioManager.playSfx('../../assets/audio/sfx/OuvertureCoffre.mp3');
 
             // change options to "read letter" and "close"
             const optionsBox = document.getElementById('chest_options');
