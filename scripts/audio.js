@@ -176,7 +176,7 @@ const AudioManager = {
             
             // Create new music element
             const newMusic = new Audio(newSrc);
-            newMusic.loop = true;
+            newMusic.loop = this.music.loop;
             newMusic.volume = 0; // Start at 0 for fade in
             
             // Set timestamp if preserving

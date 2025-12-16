@@ -58,7 +58,7 @@ function jump() {
 }
 
 function rollCredits() {
-
+    changeScene('../../credits.html');
 }
 
 // Launch game

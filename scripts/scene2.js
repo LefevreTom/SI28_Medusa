@@ -100,6 +100,9 @@ function shroomEffect() {
         container.classList.remove("shroom-effect-reverse");
         container.classList.add("shroom-effect");
         canShroom = false;
+
+        GameSave.addItem('shroomed'); // temporary add shrooms to inventory during effect
+
         // Remove effect after 10 seconds
         setTimeout(() => {
             container.classList.remove("shroom-effect");
@@ -107,6 +110,7 @@ function shroomEffect() {
             canShroom = true;
 
             AudioManager.crossFade('../../assets/audio/music/Musique5mins.mp3', 1000, true);
+            GameSave.removeItem('shroomed'); // remove shrooms from inventory after effect
         }, 15000);
     }
 }

@@ -28,7 +28,78 @@
 <script>
     function openComputer(){
         const interactionBox = document.getElementById('computer_interaction');
-        interactionBox.querySelector('.text p').innerText = "L'ordinateur s'allume et affiche un message : 'Bienvenue dans le système.'";
+        const image = document.querySelector('#computer_interaction .interaction-image');
+        image.src = "objects/computer/computer.png";
+        interactionBox.querySelector('.text p').innerText = "L'ordinateur s'allume et affiche un message : 'Veuillez rentrer le code d'activation :";
+        callTypeWriter("computer");
+        const optionsBox = document.getElementById('computer_options');
+        optionsBox.innerHTML = `
+            <button onclick="imIn();">A25</button>
+            <button onclick="out();">X37</button>
+            <button onclick="out();">KB5</button>
+            <button onclick="closeInteraction('computer_interaction');">Fermer</button>
+        `;
+    }
+    function out(){
+        const interactionBox = document.getElementById('computer_interaction');
+        const image = document.querySelector('#computer_interaction .interaction-image');
+        image.src = "objects/computer/computer.png";
+        interactionBox.querySelector('.text p').innerText = "Code incorrect. Veuillez réessayer.";
+        callTypeWriter("computer");
+    }
+    function imIn(){
+        const interactionBox = document.getElementById('computer_interaction');
+        const image = document.querySelector('#computer_interaction .interaction-image');
+        image.src = "objects/computer/computer.png";
+        interactionBox.querySelector('.text p').innerText = "Code bon !";
+        callTypeWriter("computer");
+        const optionsBox = document.getElementById('computer_options');
+        optionsBox.innerHTML = `
+            <button onclick="folder1();">Dossier 1</button>
+            <button onclick="folder3();">Dossier 3</button>
+            <button onclick="closeInteraction('computer_interaction');">Fermer</button>
+        `;
+    }
+    function folder1(){
+        const interactionBox = document.getElementById('computer_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous ouvrez le Dossier 1. Il contient un seul fichier.";
+        callTypeWriter("computer");
+        const optionsBox = document.getElementById('computer_options');
+        optionsBox.innerHTML = `
+            <button onclick="read1();">Lire le fichier</button>
+            <button onclick="imIn();">Retour</button>
+        `;
+    }
+    function read1(){
+        const interactionBox = document.getElementById('computer_interaction');
+        const image = document.querySelector('#computer_interaction .interaction-image');
+        image.src = "objects/computer/file1.png";
+        interactionBox.querySelector('.text p').innerText = "Des carrés de couleur...";
+        callTypeWriter("computer");
+    }
+    function folder3(){
+        const interactionBox = document.getElementById('computer_interaction');
+        interactionBox.querySelector('.text p').innerText = "Vous ouvrez le Dossier 3. Il contient deux fichiers.";
+        callTypeWriter("computer");
+        const optionsBox = document.getElementById('computer_options');
+        optionsBox.innerHTML = `
+            <button onclick="read2();">Lire fichier 1</button>
+            <button onclick="read3();">Lire fichier 2</button>
+            <button onclick="imIn();">Retour</button>
+        `;
+    }
+    function read2(){
+        const interactionBox = document.getElementById('computer_interaction');
+        const image = document.querySelector('#computer_interaction .interaction-image');
+        image.src = "objects/computer/file2.png";
+        interactionBox.querySelector('.text p').innerText = "Un schéma étrange...";
+        callTypeWriter("computer");
+    }
+    function read3(){
+        const interactionBox = document.getElementById('computer_interaction');
+        const image = document.querySelector('#computer_interaction .interaction-image');
+        image.src = "objects/lever/leverUp.png";
+        interactionBox.querySelector('.text p').innerText = "Un levier ?";
         callTypeWriter("computer");
     }
 </script>

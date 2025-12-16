@@ -112,6 +112,7 @@ function changeScene(scene) {
 
 function newGame() {
     GameSave.reset();
+    localStorage.removeItem("currentMusic");
     changeScene('pages/scene0/intro.html');
 }
 

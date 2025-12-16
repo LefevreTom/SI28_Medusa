@@ -1,12 +1,11 @@
-<div class="object" id="jocko" onclick="revealInteraction('jocko')"></div>
+<div class="object" id="jocko" onclick="revealInteraction('jocko'), isShroomed();"></div>
 <div class="interaction" id="jocko_interaction">
     <img src="objects/jocko/jocko.png" alt="joko" class="interaction-image">
     <div class="options" id="jocko_options">
-        <button onclick="listenJocko()">Écouter</button>
         <button onclick="closeInteraction('jocko_interaction')">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">« Entrepôt du port… quai 7… Entrepôt du port… quai 7… »</p>
+        <p class="typewriter">« Écoute... »</p>
     </div>
 </div>
 
@@ -28,5 +27,23 @@
 <script>
     // function called when picking up the jocko
     function listenJocko(){
+        AudioManager.crossFade('../../assets/audio/music/Perroquet-code.mp3', 500, true);
+        const jockoOption = document.querySelector('#jocko_options');
+        jockoOption.innerHTML = `
+            <button onclick="closeInteraction('jocko_interaction')">Fermer</button>
+        `;
+    }
+
+    function isShroomed(){
+        if(GameSave.hasItem('shroomed')){
+            const interactionBox = document.getElementById('jocko_interaction');
+            interactionBox.querySelector('.text p').innerText = "« Entrepôt du port… quai 7… Entrepôt du port… quai 7… »";
+            callTypeWriter("jocko");
+            const jockoOption = document.querySelector('#jocko_options');
+            jockoOption.innerHTML = `
+                <button onclick="listenJocko()">Écouter</button>
+                <button onclick="closeInteraction('jocko_interaction')">Fermer</button>
+            `;
+        }
     }
 </script>
