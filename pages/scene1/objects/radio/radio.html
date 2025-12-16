@@ -4,11 +4,12 @@
     <div class="options" id="radio_options">
         <button id="batteryRadio" onclick="openradio()">Allumer</button>
         <button id="onRadio" onclick="turnOn()">Allumer</button>
+        <button id="changeRadio" onclick="change()">Changer de fréquence</button>
         <button id="offRadio" onclick="turnOff()">Éteindre</button>
         <button onclick="closeInteraction('radio_interaction');">Fermer</button>
     </div>
     <div class="text"> 
-        <p class="typewriter">Une vieille radio, elle a clairement survécu à la guerre de l’eau</p>
+        <p class="typewriter">Une vieille radio, elle a clairement survécu à la guerre de l'eau</p>
     </div>
 </div>
 
@@ -25,8 +26,7 @@
         top: 74%;
         left: 67%;
     }
-    #onRadio, #offRadio {
-         display: none;
+    #onRadio, #offRadio, #changeRadio {
         display: none;
     }
 </style>
@@ -34,17 +34,21 @@
 <script>
     var hasBattery = false;
     var radioOn = false;
+    var stationId = 0;
 
     function openradio(){
         if (GameSave.hasItem('battery')){
             const interactionBox = document.getElementById('radio_interaction');
-            interactionBox.querySelector('.text p').innerText = "La batterie est insérée dans le poste";
+            interactionBox.querySelector('.text p').innerText = "La batterie est insérée dans le poste. Des grésillements... puis une musique se lance";
             hasBattery = true;
             GameSave.removeItem('battery');
             document.getElementById('batteryRadio').style.display = 'none'; 
-            document.getElementById('onRadio').style.display = 'block';
+            document.getElementById('changeRadio').style.display = 'block';
+            document.getElementById('offRadio').style.display = 'block';
             callTypeWriter("radio");
             AudioManager.playSfx('../../assets/audio/sfx/BrancheLaRadio.mp3');
+            AudioManager.crossFade('../../assets/audio/music/3 pistes-Radio/InfoXylophe.mp3', 500, true);
+            radioOn = true;
             return;
         }
         else{
@@ -54,18 +58,36 @@
             return;
         }
     }
+    function change(){
+        if (hasBattery && radioOn){
+            const interactionBox = document.getElementById('radio_interaction');
+            interactionBox.querySelector('.text p').innerText = "Vous changez de fréquence.";
+            AudioManager.playSfx('../../assets/audio/sfx/ChangementDeChaineRadio.mp3');
+            const stations = [
+                '../../assets/audio/music/3 pistes-Radio/InfoXylophe.mp3',
+                '../../assets/audio/music/3 pistes-Radio/Baila Mujer-radio2.mp3',
+                '../../assets/audio/music/3 pistes-Radio/BabylonMusiqueRadio.mp3'
+            ];
+            
+            let nextStationIndex = stationId + 1;
+            if (nextStationIndex >= stations.length) {
+                nextStationIndex = 0;
+            }
+            AudioManager.crossFade(stations[nextStationIndex], 500, true);
+            stationId = nextStationIndex;
+            callTypeWriter("radio");
+            return;
+        }
+    }
+
     function turnOn(){
         if (hasBattery && !radioOn){
             const interactionBox = document.getElementById('radio_interaction');
-            interactionBox.querySelector('.text p').innerText = "Des grésillements… puis une musique se lance";
-            AudioManager.playSfx('../../assets/audio/music/3 pistes-Radio/InfoXylophe.mp3');
             radioOn = true;
-            const onRadioOption = document.querySelector('#radio_options #onRadio');
-            onRadioOption.style.display = 'none';
-            AudioManager.playSfx('../../assets/audio/sfx/ChangementDeChaineRadio.mp3');
-            const offRadioOption = document.querySelector('#radio_options #offRadio');
-            offRadioOption.style.display = 'block';
-            AudioManager.playSfx('../../assets/audio/sfx/ChangementDeChaineRadio.mp3');
+            document.getElementById('onRadio').style.display = 'none'; 
+            document.getElementById('changeRadio').style.display = 'block';
+            document.getElementById('offRadio').style.display = 'block';
+            change();
             callTypeWriter("radio");
             return;
         }
@@ -73,14 +95,14 @@
     function turnOff(){
         if (hasBattery && radioOn){
             const interactionBox = document.getElementById('radio_interaction');
-            interactionBox.querySelector('.text p').innerText = "Le poste radio s’éteint dans un claquement sec";
+            interactionBox.querySelector('.text p').innerText = "Le poste radio s'éteint dans un claquement sec";
             radioOn = false;
+            AudioManager.crossFade('../../assets/audio/music/Musique5mins.mp3', 500, true);
             AudioManager.playSfx('../../assets/audio/sfx/ChangementDeChaineRadio.mp3');
 
-            const onRadioOption = document.querySelector('#radio_options #onRadio');
-            onRadioOption.style.display = 'block';
-            const offRadioOption = document.querySelector('#radio_options #offRadio');
-            offRadioOption.style.display = 'none';
+            document.getElementById('onRadio').style.display = 'block'; 
+            document.getElementById('changeRadio').style.display = 'none';
+            document.getElementById('offRadio').style.display = 'none';
 
             callTypeWriter("radio");
             return;
